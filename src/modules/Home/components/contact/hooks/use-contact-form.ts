@@ -44,10 +44,16 @@ export const useContactForm = () => {
   });
 
   const sendEmail = async (data: z.infer<typeof contactFormSchema>) => {
+    if (typeof window !== 'undefined' && typeof window.gtag_report_conversion === 'function') {
+      window.gtag_report_conversion();
+    } 
+    const pathPage = typeof window !== "undefined" ? window.location.href : "";
+
     const emailData = {
       to: EMAIL_INFO.to,
       from: EMAIL_INFO.from,
       subject: EMAIL_INFO.subject + " " + data.fullName,
+      pathPage,
       ...data,
     };
     try {

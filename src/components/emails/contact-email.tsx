@@ -14,6 +14,7 @@ import {
 } from "@react-email/components";
 
 interface ContactFormEmailProps {
+  pathPage?: string;
   fullName?: string;
   email?: string;
   phone?: string;
@@ -24,6 +25,7 @@ interface ContactFormEmailProps {
 }
 
 export default function ContactEmail({
+  pathPage = "",
   fullName = "",
   email = "",
   phone = "",
@@ -161,6 +163,13 @@ export default function ContactEmail({
               </>
             )}
 
+            {pathPage && (
+              <div style={normalTextSection}>
+                <Text style={normalText}>Path Page:</Text>
+                <Text style={normalText}>{pathPage}</Text>
+              </div>
+            )}
+
             {/* Quick Action */}
             {email && (
               <Section style={actionSection}>
@@ -254,6 +263,21 @@ const timestamp = {
 
 const infoSection = {
   marginBottom: "24px",
+};
+
+const normalTextSection = {
+  marginBottom: "16px",
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
+};
+
+const normalText = {
+  color: "#1E1E1E",
+  fontSize: "14px",
+  fontWeight: "400",
+  marginRight: "8px",
+  lineHeight: "1.6",
 };
 
 const sectionTitle = {

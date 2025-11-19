@@ -1,12 +1,11 @@
-import ContactEmail from "@/components/emails/contact-email";
 import MainLayout from "@/components/layouts/MainLayout";
 import { fontSora } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Toaster } from 'sonner';
+import { Toaster } from "sonner";
 import "../styles/globals.css";
 import Providers from "./providers";
 export const metadata: Metadata = {
@@ -52,12 +51,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/agents-ops.svg', type: 'image/svg+xml' },
-      { url: '/agent-ops.png', type: 'image/png' },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/agents-ops.svg", type: "image/svg+xml" },
+      { url: "/agent-ops.png", type: "image/png" },
     ],
-    apple: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    apple: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
   formatDetection: {
     email: false,
@@ -78,12 +77,11 @@ export const viewport: Viewport = {
 type RootLayoutProps = Readonly<{ children: React.ReactNode }>;
 
 export default function RootLayout({ children }: RootLayoutProps) {
-
   return (
     <html lang="vi">
       <head>
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-83DXNSST4Q`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -91,10 +89,27 @@ export default function RootLayout({ children }: RootLayoutProps) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', ${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID});
+            gtag('config', G-83DXNSST4Q);
+          `}
+        </Script>
+        <Script id="google-ads-conversion" strategy="afterInteractive">
+          {`
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                'send_to': 'G-83DXNSST4Q/mlBHCNjU4L4aEK3W7eI-',
+                'event_callback': callback
+              });
+              return false;
+            }
           `}
         </Script>
       </head>
+
       <body
         suppressHydrationWarning
         className={cn(
@@ -107,11 +122,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <MainLayout>{children}</MainLayout>
         </Providers>
 
-        <GoogleAnalytics
-          gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? ""}
-        />
-
         <Toaster />
+
+        <GoogleAnalytics gaId="G-83DXNSST4Q" />
+        <GoogleTagManager gtmId="G-83DXNSST4Q" />
       </body>
     </html>
   );

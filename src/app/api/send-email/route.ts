@@ -10,6 +10,7 @@ export async function POST(request: NextRequest) {
       to,
       from,
       subject,
+      pathPage,
       fullName,
       email,
       phone,
@@ -25,6 +26,7 @@ export async function POST(request: NextRequest) {
         : country || "";
 
     const emailComponent = ContactEmail({
+      pathPage: pathPage || "",
       fullName: fullName || "",
       email: email || "",
       phone: phone || "",
