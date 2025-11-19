@@ -51,7 +51,7 @@ export const useContactForm = () => {
       ...data,
     };
     try {
-      const response = await fetch("/api/sendư-email", {
+      const response = await fetch("/api/send-email", {
         method: "POST",
         body: JSON.stringify(emailData),
       });
