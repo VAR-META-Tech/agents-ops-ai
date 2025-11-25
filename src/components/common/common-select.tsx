@@ -1,5 +1,5 @@
-import { Controller, useFormContext } from "react-hook-form";
 import { cn } from "@/lib/utils";
+import { Controller, useFormContext } from "react-hook-form";
 import Select, {
   createFilter,
   type Props as ReactSelectProps,
@@ -65,7 +65,7 @@ export function CommonSelect({
                 ),
               menu: () =>
                 cn(
-                  "max-h-72 overflow-y-auto border !border-[#FFFFFF33] !bg-[#0B1D4E] !text-white",
+                  "max-h-72 overflow-y-hidden border !border-[#FFFFFF33] !bg-[#0B1D4E] !text-white",
                   contentClassName
                 ),
               option: (state) => {
