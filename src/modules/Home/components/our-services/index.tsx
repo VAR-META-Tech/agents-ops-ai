@@ -21,7 +21,7 @@ export const OurServices = () => {
 
       <div className="max-w-[1280px] mx-auto z-10 relative">
         <div className="flex items-center justify-between">
-          <CommonTitle className="pl-6 max-lg:text-3xl max-md:pl-3">
+          <CommonTitle as="h2" className="pl-6 max-lg:text-3xl max-md:pl-3">
             Our Services
           </CommonTitle>
         </div>
@@ -43,9 +43,9 @@ export const OurServices = () => {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-xl font-semibold mb-4">
+                  <h3 className="text-xl font-semibold mb-4">
                     {service.title}
-                  </div>
+                  </h3>
 
                   <p className="text-lg font-normal leading-8">
                     {service.description}

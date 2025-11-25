@@ -20,7 +20,7 @@ export const OurExpertise = () => {
     <div className="px-6 relative">
       <div
         className={cn(
-          "bg-no-repeat bg-[size:1000px_1000px] w-full h-full bg-no-repeat border border-[#E6E6E6]",
+          "bg-no-repeat bg-[size:1000px_1000px] w-full h-full bg-no-repeat",
           "absolute top-[-400px] left-[50%] translate-x-[-950px] w-[1000px] h-[1000px]"
         )}
         style={{
@@ -31,7 +31,9 @@ export const OurExpertise = () => {
       <div className="max-w-[1280px] mx-auto py-14 z-10 relative">
         <div className="flex items-center justify-between px-6">
           <div className="pl-6 max-md:pl-3">
-            <CommonTitle className="max-lg:text-3xl">Our Expertise</CommonTitle>
+            <CommonTitle as="h2" className="max-lg:text-3xl">
+              Our Expertise
+            </CommonTitle>
           </div>
         </div>
 
@@ -98,9 +100,9 @@ export const OurExpertise = () => {
                     transition={{ duration: 0.5 }}
                     className="h-full"
                   >
-                    <div className="text-4xl font-semibold leading-12 mb-4">
+                    <h3 className="text-4xl font-semibold leading-12 mb-4">
                       {tab.title}
-                    </div>
+                    </h3>
                     <div className="text-lg font-normal leading-8">
                       {tab.description}
                     </div>
@@ -133,9 +135,9 @@ export const OurExpertise = () => {
                       <CommonChip className="w-10 min-w-10 h-10 min-h-10 text-base bg-white max-sm:w-8 max-sm:h-8 max-sm:min-w-8 max-sm:min-h-8">
                         {i + 1}
                       </CommonChip>
-                      <div className="text-xl font-semibold leading-12 max-sm:leading-6 max-sm:text-lg max-sm:mt-1 max-[354px]:text-lg">
+                      <h3 className="text-xl font-semibold leading-12 max-sm:leading-6 max-sm:text-lg max-sm:mt-1 max-[354px]:text-lg">
                         {tab.title}
-                      </div>
+                      </h3>
                     </div>
                     <div className="text-lg font-normal leading-8 max-sm:text-base">
                       {tab.description}

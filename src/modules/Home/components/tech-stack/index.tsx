@@ -6,7 +6,9 @@ export const TechStack = () => {
   return (
     <div className="bg-white py-48 px-6 min-w-[320px]">
       <div className="max-w-[1280px] mx-auto flex justify-between items-center max-xl:flex-col">
-        <CommonTitle className="max-lg:text-3xl">Our Techstack</CommonTitle>
+        <CommonTitle as="h2" className="max-lg:text-3xl">
+          Our Techstack
+        </CommonTitle>
 
         <Separator
           className="!h-[216px] ml-12 max-xl:hidden"

@@ -41,21 +41,28 @@ export const NAV_LINKS = [
 
 export const Header = () => {
   return (
-    <div className="flex justify-between items-center max-w-[1280px] h-[92px] mx-auto max-2xl:px-6">
+    <header className="flex justify-between items-center max-w-[1280px] h-[92px] mx-auto max-2xl:px-6">
       <div>
         <Icons.agentOpsLogo />
       </div>
 
-      <div className="flex items-center justify-end gap-4 w-full max-xl:justify-end">
+      <nav
+        className="flex items-center justify-end gap-4 w-full max-xl:justify-end"
+        aria-label="Main navigation"
+      >
         <ul className="flex items-center gap-5 font-medium text-base max-xl:hidden">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <span
-                onClick={() => handleScroll(link.elId)}
+              <a
+                href={`#${link.elId}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScroll(link.elId);
+                }}
                 className="cursor-pointer"
               >
                 {link.label}
-              </span>
+              </a>
             </li>
           ))}
         </ul>
@@ -96,7 +103,7 @@ export const Header = () => {
           <span>Contact us</span>
           <Icons.arrowUpRightIcon className="!w-5 !h-5" />
         </CommonButton>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };

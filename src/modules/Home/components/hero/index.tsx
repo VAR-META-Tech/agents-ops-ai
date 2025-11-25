@@ -35,10 +35,14 @@ export const Hero = () => {
               Unlock the Power of
               <img
                 src={agentHeroText.src}
+                alt="AI Agents"
                 className="mt-2 max-lg:w-[156px] object-contain max-lg:mb-2"
               />
             </h1>
-            <CommonTitle className="text-5xl text-center mt-2 max-lg:text-3xl">
+            <CommonTitle
+              as="h2"
+              className="text-5xl text-center mt-2 max-lg:text-3xl"
+            >
               Transform Your Business Today
             </CommonTitle>
             <p className="text-2xl font-normal leading-9 text-center mt-6 max-lg:text-lg">

@@ -8,11 +8,13 @@ import Script from "next/script";
 import { Toaster } from "sonner";
 import "../styles/globals.css";
 import Providers from "./providers";
+import { StructuredData } from "./structured-data";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.appUrl),
   title: {
-    default: "AgentOps",
-    template: "%s | AgentOps",
+    default: siteConfig.metaTitle,
+    template: "%s | AgentsOps",
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
@@ -22,10 +24,18 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   alternates: {
     canonical: siteConfig.appUrl,
   },
+  category: "Technology",
   openGraph: {
     type: "website",
     locale: "vi_VN",
@@ -38,7 +48,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "AgentOps",
+        alt: "AgentsOps - Enterprise AI Agent Development & Consulting Services",
       },
     ],
   },
@@ -80,6 +90,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="vi">
       <head>
+        <link rel="manifest" href="/site.webmanifest" />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=G-83DXNSST4Q`}
           strategy="afterInteractive"
@@ -90,22 +101,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', G-83DXNSST4Q);
-          `}
-        </Script>
-        <Script id="google-ads-conversion" strategy="afterInteractive">
-          {`
-            function gtag_report_conversion(url) {
-              var callback = function () {
-                if (typeof(url) != 'undefined') {
-                  window.location = url;
-                }
-              };
-              gtag('event', 'conversion', {
-                'send_to': 'G-83DXNSST4Q/mlBHCNjU4L4aEK3W7eI-',
-                'event_callback': callback
-              });
-              return false;
-            }
           `}
         </Script>
       </head>
@@ -126,6 +121,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
         <GoogleAnalytics gaId="G-83DXNSST4Q" />
         <GoogleTagManager gtmId="G-83DXNSST4Q" />
+        <StructuredData />
       </body>
     </html>
   );

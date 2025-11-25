@@ -33,7 +33,7 @@ export const FOOTER_LINKS = [
 
 export const Footer = () => {
   return (
-    <div className="bg-[#001344] py-16 px-6 text-white">
+    <footer className="bg-[#001344] py-16 px-6 text-white">
       <div className="max-w-[1280px] mx-auto min-w-[320px] flex justify-between max-xl:flex-col">
         <div className="flex flex-col items-start justify-between">
           <div className="mb-12">
@@ -71,7 +71,7 @@ export const Footer = () => {
                 68 Xo Viet Nghe Tinh,
               </div>
               <div className="text-base font-normal leading-[26px] text-[#7C89AE]">
-                Hoa Cuong Nam, Cam Le, Da Nang
+                Hoa Cuong, Da Nang
               </div>
             </div>
 
@@ -96,17 +96,24 @@ export const Footer = () => {
             Contact@var-meta.com
           </div>
 
-          <ul className="text-base leading-[26px] font-normal flex flex-col gap-3">
-            {FOOTER_LINKS.map((link) => (
-              <li
-                key={link.label}
-                onClick={() => handleScroll(link.elId)}
-                className="cursor-pointer"
-              >
-                {link.label}
-              </li>
-            ))}
-          </ul>
+          <nav aria-label="Footer navigation">
+            <ul className="text-base leading-[26px] font-normal flex flex-col gap-3">
+              {FOOTER_LINKS.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={`#${link.elId}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScroll(link.elId);
+                    }}
+                    className="cursor-pointer"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
           <div className="flex items-center justify-between text-base leading-[26px] font-normal mt-[50px] max-lg:flex-col max-lg:items-start gap-2">
             <div>©2025 Var-meta All Rights Serviced</div>
@@ -115,6 +122,6 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };

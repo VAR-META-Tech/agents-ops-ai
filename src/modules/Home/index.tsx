@@ -14,30 +14,31 @@ import { WhatMakesUsStandout } from "./components/what-make-us-standout";
 
 const Home = () => {
   return (
-    <div className="bg-[#F9F9F9]">
+    <main className="bg-[#F9F9F9]">
       <Hero />
-      <div id="services">
+      <section id="services" aria-label="Our Services">
         <OurServices />
-      </div>
-      <div id="expertise">
+      </section>
+      <section id="expertise" aria-label="Our Expertise">
         <OurExpertise />
-      </div>
-      <div id="our-strength">
+      </section>
+      <section id="our-strength" aria-label="What Makes Us Standout">
         <WhatMakesUsStandout />
-      </div>
-      <div id="how-it-work">
+      </section>
+      <section id="how-it-work" aria-label="How It Works">
         <HowItWork />
-      </div>
-      <div id="our-process">
+      </section>
+      <section id="our-process" aria-label="Our Process">
         <OurProcess />
-      </div>
-      <div id="our-team">
+      </section>
+      <section id="our-team" aria-label="Our Team">
         <OurTeam />
-      </div>
+      </section>
       <Testimonials />
       <TechStack />
-      <div
+      <section
         id="contact"
+        aria-label="Contact Us"
         className={cn(
           "bg-[radial-gradient(100%_100%_at_50%_100.08%,_#001857_0%,_#001344_100%)]",
           "min-h-[630px] px-20 py-24 overflow-hidden relative max-sm:px-6"
@@ -51,10 +52,11 @@ const Home = () => {
           style={{
             backgroundImage: `url(${circleFrame.src || circleFrame})`,
           }}
+          aria-hidden="true"
         />
         <Contact />
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

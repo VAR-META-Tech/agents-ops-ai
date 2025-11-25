@@ -10,7 +10,7 @@ export const Contact = () => {
       )}
     >
       <div>
-        <CommonTitle className="text-white mb-3 max-sm:text-3xl">
+        <CommonTitle as="h2" className="text-white mb-3 max-sm:text-3xl">
           Have An Innovative Idea?
         </CommonTitle>
         <p className="text-lg leading-8 text-[#7C89AE] max-w-[600px]">

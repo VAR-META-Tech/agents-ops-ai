@@ -65,7 +65,9 @@ export const OurProcess = () => {
     <div className="bg-white px-6">
       <div className="max-w-[1280px] mx-auto py-10">
         <div className="mb-10 pl-6 flex items-center justify-between max-md:pl-3 max-md:min-w-[320px]">
-          <CommonTitle className="max-lg:text-3xl">Our Process</CommonTitle>
+          <CommonTitle as="h2" className="max-lg:text-3xl">
+            Our Process
+          </CommonTitle>
 
           <div className="flex gap-8 max-sm:gap-4">
             <Button

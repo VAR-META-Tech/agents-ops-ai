@@ -55,9 +55,9 @@ export const Testimonials = () => {
         opts={{ loop: true, active: true }}
         setApi={setApi}
       >
-        <div className="text-2xl font-semibold leading-9 text-[#1E1E1EAD] text-center mb-8">
+        <h2 className="text-2xl font-semibold leading-9 text-[#1E1E1EAD] text-center mb-8">
           Testimonials
-        </div>
+        </h2>
 
         <CarouselContent className="w-full mb-6 px-2 max-sm:m-0">
           {TESTIMONIALS.map((testimonial, index) => (
