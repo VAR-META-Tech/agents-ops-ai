@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Varmeta" }, { name: "AgentsOps" }],
   creator: "Varmeta",
   publisher: "Varmeta",
+  applicationName: "AgentsOps",
   robots: {
     index: true,
     follow: true,
@@ -34,6 +35,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteConfig.appUrl,
+  },
+  verification: {
+    // Add Google Search Console verification if you have one
+    // google: 'your-verification-code',
   },
   openGraph: {
     type: "website",
@@ -60,10 +65,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/agents-ops.svg", type: "image/svg+xml" },
-      { url: "/agents-ops.png", type: "image/png" },
+      { url: "/agents-ops.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/agents-ops.png", type: "image/png", sizes: "512x512" },
     ],
-    apple: "/favicon.ico",
+    apple: [
+      { url: "/agents-ops.png", sizes: "180x180", type: "image/png" },
+    ],
     shortcut: "/favicon.ico",
   },
 };
@@ -83,7 +90,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="vi">
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/agents-ops.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/agents-ops.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <meta name="application-name" content="AgentOps" />
+        <meta name="apple-mobile-web-app-title" content="AgentOps" />
+        
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=G-83DXNSST4Q`}
           strategy="afterInteractive"
