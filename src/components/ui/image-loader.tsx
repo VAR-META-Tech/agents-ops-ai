@@ -21,7 +21,11 @@ const shimmer = (w: number, h: number) => `
 const toBase64 = (str: string) =>
   typeof window === 'undefined' ? Buffer.from(str).toString('base64') : window.btoa(str);
 
-const ImageLoader = ({ alt, ...props }: ImageProps) => {
+interface ImageLoaderProps extends ImageProps {
+  unoptimized?: boolean;
+}
+
+const ImageLoader = ({ alt, unoptimized = false, ...props }: ImageLoaderProps) => {
   const [src, setSrc] = useState(props.src || '/images/image_unavailable.webp');
 
   useEffect(() => {
@@ -35,7 +39,7 @@ const ImageLoader = ({ alt, ...props }: ImageProps) => {
       {...props}
       src={src}
       alt={alt}
-      unoptimized
+      unoptimized={unoptimized}
       key={src?.toString()}
       draggable={false}
       onError={() => setSrc('/images/image_unavailable.webp')}

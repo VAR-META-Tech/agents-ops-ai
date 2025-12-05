@@ -18,31 +18,29 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
-  authors: [{ name: "AgentOps" }],
-  creator: "AgentOps",
-  publisher: "AgentOps",
+  authors: [{ name: "Varmeta" }, { name: "AgentsOps" }],
+  creator: "Varmeta",
+  publisher: "Varmeta",
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   alternates: {
     canonical: siteConfig.appUrl,
   },
-  category: "Technology",
   openGraph: {
     type: "website",
-    locale: "vi_VN",
     url: siteConfig.appUrl,
     title: siteConfig.metaTitle,
     description: siteConfig.description,
-    siteName: "AgentOps",
+    siteName: "AgentsOps",
     images: [
       {
         url: siteConfig.ogImage,
@@ -63,15 +61,10 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
       { url: "/agents-ops.svg", type: "image/svg+xml" },
-      { url: "/agent-ops.png", type: "image/png" },
+      { url: "/agents-ops.png", type: "image/png" },
     ],
     apple: "/favicon.ico",
     shortcut: "/favicon.ico",
-  },
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
   },
 };
 
@@ -100,7 +93,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', G-83DXNSST4Q);
+            gtag('config', 'G-83DXNSST4Q');
           `}
         </Script>
       </head>

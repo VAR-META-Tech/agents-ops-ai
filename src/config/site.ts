@@ -7,12 +7,13 @@ export const siteConfig = {
   name: "AgentOps",
   metaTitle: "AgentOps | Enterprise AI Agent Development & Consulting Services",
   description:
-    "Transform your business with custom AI agents. Expert consulting, development, and integration services for Sales, HR, Customer Service, Content, and Finance automation. Automate 60-70% of employee tasks.",
+    "Transform your business with custom AI agents. Expert consulting, development, etc.",
   // ogImage needs full URL for social media platforms
-  ogImage: `${appUrl}agent-ops.png`,
+  ogImage: `${appUrl}hero-image.png`,
   keywords: [
     "AgentsOps",
     "Agents Ops",
+    "Varmeta",
     "AI Agents",
     "AI Agent Strategy Consulting",
     "Custom AI Agent Development",

@@ -15,6 +15,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/private/", "/api/"],
       },
     ],
-    sitemap: `${siteConfig.appUrl}/sitemap.xml`,
+    sitemap: `${siteConfig.appUrl}sitemap.xml`,
   };
 }

@@ -8,7 +8,7 @@ export function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "AgentOps",
+    name: "AgentsOps",
     url: siteConfig.appUrl,
     logo: `${siteConfig.appUrl}agents-ops.svg`,
     description: siteConfig.description,
@@ -30,12 +30,12 @@ export function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "AgentOps",
+    name: "AgentsOps",
     url: siteConfig.appUrl,
     description: siteConfig.description,
     publisher: {
       "@type": "Organization",
-      name: "AgentOps",
+      name: "Varmeta",
     },
     potentialAction: {
       "@type": "SearchAction",
@@ -53,7 +53,7 @@ export function StructuredData() {
     serviceType: "AI Agent Development & Consulting",
     provider: {
       "@type": "Organization",
-      name: "AgentOps",
+      name: "Varmeta",
     },
     areaServed: {
       "@type": "Country",
