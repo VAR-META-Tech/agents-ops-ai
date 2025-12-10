@@ -1,16 +1,16 @@
 {
-  "name": "AgentsOps - Enterprise AI Agent Development & Consulting Services",
+  "name": "AgentsOps",
   "short_name": "AgentsOps",
   "description": "Transform your business with custom AI agents. Expert consulting, development, and integration services for Sales, HR, Customer Service, Content, and Finance automation.",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
+      "src": "/agents-ops.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/web-app-manifest-512x512.png",
+      "src": "/agents-ops.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

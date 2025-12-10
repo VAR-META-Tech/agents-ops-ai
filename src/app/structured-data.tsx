@@ -10,7 +10,7 @@ export function StructuredData() {
     "@type": "Organization",
     name: "AgentsOps",
     url: siteConfig.appUrl,
-    logo: `${siteConfig.appUrl}agents-ops.svg`,
+    logo: `${siteConfig.appUrl}agents-ops.png`,
     description: siteConfig.description,
     address: {
       "@type": "PostalAddress",
