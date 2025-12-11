@@ -64,9 +64,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    apple: "/agents-ops.png",
-    shortcut: "/agents-ops.png",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-96x96.png",
   },
+  manifest: "/site.webmanifest",
 };
 
 export const viewport: Viewport = {
