@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteConfig.appUrl,
-    title: siteConfig.metaTitle,
+    title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: siteConfig.metaTitle,
+        alt: siteConfig.name,
       },
     ],
   },
