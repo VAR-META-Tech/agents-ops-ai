@@ -1,16 +1,14 @@
-"use client";
-
 import { Icons } from "@/assets/icons";
 import { CommonButton } from "@/components/common/common-button";
-import { handleScroll } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { MenuIcon } from "lucide-react";
+import { ContactBtn } from "./components/contact-btn";
+import { HeaderLinks } from "./components/header-links";
+import { HeaderMobileLinks } from "./components/header-mobile-links";
 
 export const NAV_LINKS = [
   {
@@ -50,22 +48,7 @@ export const Header = () => {
         className="flex items-center justify-end gap-4 w-full max-xl:justify-end"
         aria-label="Main navigation"
       >
-        <ul className="flex items-center gap-5 font-medium text-base max-xl:hidden">
-          {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              <a
-                href={`#${link.elId}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleScroll(link.elId);
-                }}
-                className="cursor-pointer"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <HeaderLinks />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild className="">
@@ -80,29 +63,11 @@ export const Header = () => {
             className="w-56 bg-white border border-[#E6E6E6] rounded-3xl p-4 mt-3 z-50"
             align="start"
           >
-            <DropdownMenuGroup>
-              {NAV_LINKS.map((link) => (
-                <DropdownMenuItem
-                  key={link.label}
-                  className="cursor-pointer p-1 text-base hover:bg-[#dadada]"
-                >
-                  <span onClick={() => handleScroll(link.elId)}>
-                    {link.label}
-                  </span>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuGroup>
+            <HeaderMobileLinks />
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <CommonButton
-          className="ml-5 min-w-32 h-11 text-sm !pr-3 !pl-4 gap-1 max-xl:ml-2 max-sm:hidden"
-          variant="outline"
-          onClick={() => handleScroll("contact")}
-        >
-          <span>Contact us</span>
-          <Icons.arrowUpRightIcon className="!w-5 !h-5" />
-        </CommonButton>
+        <ContactBtn />
       </nav>
     </header>
   );

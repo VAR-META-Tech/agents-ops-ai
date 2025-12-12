@@ -1,23 +1,16 @@
-"use client";
-
-import { Icons } from "@/assets/icons";
 import agentHeroText from "@/assets/images/agent-hero-text.png";
 import circleFrame from "@/assets/images/circle-frame-white-v2.png";
 import linearBg from "@/assets/images/linear.png";
-import heroEffects from "@/assets/lotties/hero-effects.json";
-import { CommonButton } from "@/components/common/common-button";
 import { CommonTitle } from "@/components/common/common-title";
-import { cn, handleScroll } from "@/lib/utils";
-import Lottie from "lottie-react";
 import Image from "next/image";
+import { BtnGroup } from "./components/btn-group";
+import { LottieComponent } from "./components/lottie";
 
 export const Hero = () => {
   return (
-    <div
-      className="bg-no-repeat bg-[size:100%_100%] bg-[position:50%_200px] overflow-hidden relative"
-    >
+    <div className="bg-no-repeat bg-[size:100%_100%] bg-[position:50%_200px] overflow-hidden relative">
       <div>
-        <Image 
+        <Image
           src={linearBg.src}
           className="object-cover"
           fill
@@ -26,9 +19,8 @@ export const Hero = () => {
           priority
         />
       </div>
-      {" "}
       <div className="pt-20 min-w-[320px]">
-        <Image 
+        <Image
           src={circleFrame.src}
           className="object-cover absolute top-[50%] left-[50%] translate-x-[calc(-50%)] translate-y-[calc(-50%+500px)] animate-spin-slow min-w-[1150px] min-h-[1150px]"
           alt="Circle Frame"
@@ -57,35 +49,9 @@ export const Hero = () => {
             </p>
           </div>
 
-          <div className="flex items-center justify-center gap-4 mt-10 relative z-10">
-            <CommonButton
-              className="min-w-32 h-11 text-sm !pr-3 !pl-4 gap-1 !bg-[#1E1E1E] hover:!bg-[#343434] !text-white !flex !items-center !justify-center"
-              onClick={() => handleScroll("contact")}
-            >
-              <span>Contact us</span>
-              <Icons.arrowTopRightWhiteIcon className="!w-5 !h-5" />
-            </CommonButton>
-            <CommonButton
-              className="min-w-32 h-11 text-sm !pr-3 !pl-4 gap-1"
-              variant="outline"
-              onClick={() => handleScroll("services")}
-            >
-              <span>Learn more</span>
-              <Icons.arrowDownIcon className="!w-5 !h-5" />
-            </CommonButton>
-          </div>
+          <BtnGroup />
 
-          <div
-            className={cn(
-              "max-w-[1280px] mx-auto p-16 pt-24 h-[470px]",
-              "flex items-center justify-center mt-12 relative z-10"
-            )}
-          >
-            <Lottie
-              animationData={heroEffects}
-              className="w-[400px] absolute top-[50%] left-[50%] translate-x-[calc(-50%+20px)] translate-y-[calc(-50%+120px)]"
-            />
-          </div>
+          <LottieComponent />
         </div>
       </div>
     </div>

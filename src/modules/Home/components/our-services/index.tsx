@@ -10,16 +10,6 @@ import { SERVICES } from "./utils/constants";
 export const OurServices = () => {
   return (
     <div className="py-14 px-6 relative">
-      {/* <div
-        className={cn(
-          "bg-no-repeat bg-[size:1000px_1000px] w-full h-full bg-no-repeat",
-          "absolute top-[-400px] left-[50%] translate-x-[calc(-950px)] w-[1000px] h-[1000px]"
-        )}
-        style={{
-          backgroundImage: `url(${ellipseLinear.src || ellipseLinear})`,
-        }}
-      /> */}
-
       <Image
         src={ellipseLinear.src}
         className={cn(
