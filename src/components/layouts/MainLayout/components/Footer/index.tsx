@@ -1,8 +1,8 @@
-"use client";
-
 import { Icons } from "@/assets/icons";
 import agentsOpsLogoWhite from "@/assets/images/agents-ops-logo-white.png";
-import { cn, handleScroll } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { FooterLinks } from "./components/footer-links";
 
 export const FOOTER_LINKS = [
   {
@@ -37,7 +37,13 @@ export const Footer = () => {
       <div className="max-w-[1280px] mx-auto min-w-[320px] flex justify-between max-xl:flex-col">
         <div className="flex flex-col items-start justify-between">
           <div className="mb-12">
-            <img src={agentsOpsLogoWhite.src} alt="AgentOps" />
+            <Image
+              src={agentsOpsLogoWhite.src}
+              alt="AgentOps"
+              width={254}
+              height={47}
+              priority
+            />
             <div className="text-base font-normal leading-[26px] text-[#7C89AE] pl-11">
               A Varmeta company
             </div>
@@ -96,24 +102,7 @@ export const Footer = () => {
             Contact@var-meta.com
           </div>
 
-          <nav aria-label="Footer navigation">
-            <ul className="text-base leading-[26px] font-normal flex flex-col gap-3">
-              {FOOTER_LINKS.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={`#${link.elId}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleScroll(link.elId);
-                    }}
-                    className="cursor-pointer"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <FooterLinks />
 
           <div className="flex items-center justify-between text-base leading-[26px] font-normal mt-[50px] max-lg:flex-col max-lg:items-start gap-2">
             <div>©2025 Var-meta All Rights Serviced</div>

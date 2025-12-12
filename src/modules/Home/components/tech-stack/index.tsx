@@ -1,6 +1,7 @@
 import techStackImage from "@/assets/images/tech-stack.png";
 import { CommonTitle } from "@/components/common/common-title";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 export const TechStack = () => {
   return (
@@ -19,8 +20,14 @@ export const TechStack = () => {
           className="hidden max-xl:block my-12"
           orientation="horizontal"
         />
-
-        <img src={techStackImage.src} alt="Tech Stack" />
+        
+        <Image
+          src={techStackImage.src}
+          alt="Tech Stack"
+          width={748}
+          height={204}
+          priority
+        />
       </div>
     </div>
   );

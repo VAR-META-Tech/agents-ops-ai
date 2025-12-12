@@ -4,19 +4,22 @@ import { CommonChip } from "@/components/common/common-chip";
 import { CommonTitle } from "@/components/common/common-title";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { SERVICES } from "./utils/constants";
 
 export const OurServices = () => {
   return (
     <div className="py-14 px-6 relative">
-      <div
+      <Image
+        src={ellipseLinear.src}
         className={cn(
-          "bg-no-repeat bg-[size:1000px_1000px] w-full h-full bg-no-repeat",
-          "absolute top-[-400px] left-[50%] translate-x-[calc(-950px)] w-[1000px] h-[1000px]"
+          "object-cover absolute top-[-400px] left-[50%] translate-x-[calc(-950px)]",
+          "max-lg:left-[750px] max-lg:top-[-250px] max-sm:left-[900px] max-sm:top-[-100px]"
         )}
-        style={{
-          backgroundImage: `url(${ellipseLinear.src || ellipseLinear})`,
-        }}
+        alt="Ellipse Linear"
+        width={1000}
+        height={1000}
+        priority
       />
 
       <div className="max-w-[1280px] mx-auto z-10 relative">

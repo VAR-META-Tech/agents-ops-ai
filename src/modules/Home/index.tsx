@@ -1,6 +1,6 @@
-// import React from "react";
 import circleFrame from "@/assets/images/circle-frame.png";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { Contact } from "./components/contact";
 import { Hero } from "./components/hero";
 import { HowItWork } from "./components/how-it-work";
@@ -44,15 +44,15 @@ const Home = () => {
           "min-h-[630px] px-20 py-24 overflow-hidden relative max-sm:px-6"
         )}
       >
-        <div
+        <Image
           className={cn(
-            "bg-no-repeat bg-[size:1150px_1150px]",
-            "h-[1150px] w-[1150px] absolute top-[23%] left-[50%] translate-x-[-50%] z-0"
+            "absolute bottom-[-880px] left-[50%] translate-x-[-50%] z-0 max-lg:hidden"
           )}
-          style={{
-            backgroundImage: `url(${circleFrame.src || circleFrame})`,
-          }}
-          aria-hidden="true"
+          src={circleFrame.src}
+          alt="Circle Frame"
+          width={1150}
+          height={1150}
+          priority
         />
         <Contact />
       </section>
