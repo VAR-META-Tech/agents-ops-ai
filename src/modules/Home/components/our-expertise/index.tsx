@@ -8,6 +8,7 @@ import { CommonTitle } from "@/components/common/common-title";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import React, { useRef } from "react";
 import { TABS, TABS_CONTENT } from "./utils/contants";
 
@@ -18,14 +19,15 @@ export const OurExpertise = () => {
 
   return (
     <div className="px-6 relative">
-      <div
-        className={cn(
-          "bg-no-repeat bg-[size:1000px_1000px] w-full h-full bg-no-repeat",
-          "absolute top-[-400px] left-[50%] translate-x-[-950px] w-[1000px] h-[1000px]"
+      <Image 
+        src={ellipseLinear.src}
+        className={cn("object-cover absolute top-[-400px] left-[50%] translate-x-[calc(-950px)]",
+          "max-lg:left-[750px] max-lg:top-[-250px] max-sm:left-[900px] max-sm:top-[-100px]"
         )}
-        style={{
-          backgroundImage: `url(${ellipseLinear.src || ellipseLinear})`,
-        }}
+        alt="Ellipse Linear"
+        width={1000}
+        height={1000}
+        priority
       />
 
       <div className="max-w-[1280px] mx-auto py-14 z-10 relative">
@@ -69,14 +71,15 @@ export const OurExpertise = () => {
                   </CommonChip>
                   <motion.div
                     className={cn(
-                      "origin-left text-lg max-2xl:text-xl break-normal whitespace-break-spaces text-start text-[#1E1E1E]",
-                      {
-                        "text-xl transition-all duration-200":
-                          tab.value === activeTab,
-                      }
+                      "origin-left text-lg break-normal whitespace-break-spaces text-start text-[#1E1E1E]",
+                      // {
+                      //   "text-xl transition-all duration-200":
+                      //     tab.value === activeTab,
+                      // }
                     )}
                     viewport={{ once: false }}
                     transition={{ duration: 0.3 }}
+                    animate={{ scale:  tab.value === activeTab ? 1.08 : 1  }}
                     initial={false}
                   >
                     {tab.label}

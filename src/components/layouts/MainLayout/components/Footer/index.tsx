@@ -3,6 +3,7 @@
 import { Icons } from "@/assets/icons";
 import agentsOpsLogoWhite from "@/assets/images/agents-ops-logo-white.png";
 import { cn, handleScroll } from "@/lib/utils";
+import Image from "next/image";
 
 export const FOOTER_LINKS = [
   {
@@ -37,7 +38,13 @@ export const Footer = () => {
       <div className="max-w-[1280px] mx-auto min-w-[320px] flex justify-between max-xl:flex-col">
         <div className="flex flex-col items-start justify-between">
           <div className="mb-12">
-            <img src={agentsOpsLogoWhite.src} alt="AgentOps" />
+            <Image
+              src={agentsOpsLogoWhite.src}
+              alt="AgentOps"
+              width={254}
+              height={47}
+              priority
+            />
             <div className="text-base font-normal leading-[26px] text-[#7C89AE] pl-11">
               A Varmeta company
             </div>

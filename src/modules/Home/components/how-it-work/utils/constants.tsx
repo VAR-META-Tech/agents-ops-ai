@@ -1,14 +1,17 @@
 import agentsProcess from "@/assets/images/agents-process.png";
 import output from "@/assets/images/output.png";
 import usePrompt from "@/assets/images/use-prompt.png";
+import Image from "next/image";
 
 export const HOW_IT_WORKS = [
   {
     id: 1,
     title: "User Prompt Ingestion",
     image: (
-      <img
-        className="w-full h-[280px] object-cover rounded-2xl max-lg:h-[350px]"
+      <Image
+        className="object-cover rounded-2xl"
+        width={650}
+        height={280}
         src={usePrompt.src as string}
         alt="User Prompt"
       />
@@ -18,8 +21,10 @@ export const HOW_IT_WORKS = [
     id: 2,
     title: "Agents Collaboration & Execution",
     image: (
-      <img
-        className="w-full h-[280px] object-cover rounded-2xl max-lg:h-[350px]"
+      <Image
+        className="object-cover rounded-2xl"
+        width={650}
+        height={280}
         src={agentsProcess.src as string}
         alt="Agent Process"
       />
@@ -29,8 +34,10 @@ export const HOW_IT_WORKS = [
     id: 3,
     title: "Output Delivery",
     image: (
-      <img
-        className="w-full h-[280px] object-cover rounded-2xl max-lg:h-[350px]"
+      <Image
+        className="object-cover rounded-2xl"
+        width={650}
+        height={280}
         src={output.src as string}
         alt="Output"
       />

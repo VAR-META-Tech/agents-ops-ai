@@ -3,23 +3,25 @@ import linearFull from "@/assets/images/linear-full.png";
 import CommonAnimationContainer from "@/components/common/common-animation-container";
 import { CommonTitle } from "@/components/common/common-title";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { FEATURES } from "./utils/constants";
 
 export const WhatMakesUsStandout = () => {
   return (
     <div className="bg-gradient-to-b from-[#F9F9F9] to-white relative overflow-hidden">
-      <div
+      <Image
+        src={linearFull.src}
         className={cn(
-          "bg-no-repeat bg-[size:100%_100%] w-full h-full bg-no-repeat absolute top-[0%]",
-          "left-[calc(30%)] max-lg:top-[calc(10%)] max-lg:left-[calc(50%-50px)]"
+          "absolute !left-[calc(30%)] max-lg:!top-[calc(10%)] max-lg:!left-[calc(50%-50px)] "
         )}
-        style={{
-          backgroundImage: `url(${linearFull.src || linearFull})`,
-        }}
+        alt="Ellipse Linear"
+        fill
+        sizes="100vw"
+        priority
       />
 
       <div className={cn("relative")}>
-        <div
+        {/* <div
           className={cn(
             "bg-no-repeat bg-[size:1000px_1000px]",
             "[transform:rotate(250deg)] h-[1000px] w-[1000px] top-[10%] left-[calc(50%+180px)] absolute"
@@ -29,7 +31,19 @@ export const WhatMakesUsStandout = () => {
               circleFrameWhiteV2.src || circleFrameWhiteV2
             })`,
           }}
+        /> */}
+
+        <Image
+          src={circleFrameWhiteV2.src}
+          className={cn(
+            "[transform:rotate(250deg)] top-[10%] left-[calc(50%+180px)] absolute max-md:hidden"
+          )}
+          alt="Circle Frame White V2"
+          width={1000}
+          height={1000}
+          priority
         />
+        
         <div className="max-w-[1280px] mx-auto py-14 text-white max-2xl:px-8 z-10 relative">
           <div className="mb-16 py-6">
             <CommonTitle as="h2" className="max-lg:text-3xl text-[#1E1E1E]">

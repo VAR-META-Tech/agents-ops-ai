@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: "%s | " + siteConfig.name,
   },
+  generator: 'Next.js',
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.name }],

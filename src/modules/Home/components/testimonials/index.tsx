@@ -9,6 +9,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import React from "react";
 import { TESTIMONIALS } from "./utils/constants";
 
@@ -43,13 +44,19 @@ export const Testimonials = () => {
   return (
     <div
       className={cn(
-        "bg-white min-h-[480px] min-w-[320px] pt-[100px] pb-4",
-        "bg-no-repeat bg-[position:50%_14%] bg-[length:1400px_900px]"
+        "bg-white min-h-[480px] min-w-[320px] pt-[100px] pb-4 relative overflow-hidden"
       )}
-      style={{
-        backgroundImage: `url(${dottedArtBg.src || dottedArtBg})`,
-      }}
     >
+      <Image
+        src={dottedArtBg.src}
+        className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] min-w-[600px] min-h-[650px]"
+        objectFit="cover"
+        alt="Dotted Art BG"
+        width={600}
+        height={650}
+        priority
+      />
+
       <Carousel
         className="w-full max-w-[1280px] mx-auto"
         opts={{ loop: true, active: true }}
@@ -78,7 +85,10 @@ export const Testimonials = () => {
           ))}
         </CarouselContent>
 
-        <CommonAnimationContainer className="flex gap-3 justify-center items-center mt-4">
+        <CommonAnimationContainer
+          className="flex gap-3 justify-center items-center mt-4"
+          initial={{ opacity: 0, y: 0 }}
+        >
           {TESTIMONIALS.map((_, index) => (
             <div
               key={index}
