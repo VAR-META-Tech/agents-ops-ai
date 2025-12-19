@@ -9,6 +9,7 @@ export const siteConfig = {
   description:
     "Transform your business with custom AI agents. Expert consulting, development, etc.",
   // ogImage needs full URL for social media platforms
+  googleSiteVerification: 'yMdQp-SCW00eiN9kZNPA9_VZPEXI25JfIdb7zhQDH2Y',
   ogImage: `${appUrl}hero-image.png`,
   keywords: [
     "AgentsOps",

@@ -38,6 +38,7 @@ export const metadata: Metadata = {
     canonical: siteConfig.appUrl,
   },
   verification: {
+    google: siteConfig.googleSiteVerification,
     // Add Google Search Console verification if you have one
     // google: 'your-verification-code',
   },
