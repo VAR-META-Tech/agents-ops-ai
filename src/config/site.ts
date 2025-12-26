@@ -26,8 +26,10 @@ export const siteConfig = {
     "Data",
     "API",
     "AI Agents",
-    "AI Agent Strategy Consulting",
-    "Custom AI Agent Development",
-    "AI Agent Integration",
+    "Consulting",
+    "Solution",
+    "Service",
+    "Enterprise",
+    "Business",
   ],
 };
