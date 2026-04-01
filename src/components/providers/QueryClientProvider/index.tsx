@@ -1,11 +1,8 @@
-"use client";
+'use client';
 
-import {
-  QueryClientProvider as Provider,
-  QueryClient,
-} from "@tanstack/react-query";
+import { QueryClientProvider as Provider, QueryClient } from '@tanstack/react-query';
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from 'react';
 
 const queryClient = new QueryClient({
   defaultOptions: {

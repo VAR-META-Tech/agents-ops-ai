@@ -1,9 +1,6 @@
-import { cn } from "@/lib/utils";
-import { Controller, useFormContext } from "react-hook-form";
-import Select, {
-  createFilter,
-  type Props as ReactSelectProps,
-} from "react-select";
+import { cn } from '@/lib/utils';
+import { Controller, useFormContext } from 'react-hook-form';
+import Select, { createFilter, type Props as ReactSelectProps } from 'react-select';
 
 interface SelectOption {
   label: string;
@@ -27,7 +24,7 @@ export function CommonSelect({
   options,
   label,
   description,
-  placeholder = "Select an option",
+  placeholder = 'Select an option',
   containerClassName,
   triggerClassName,
   contentClassName,
@@ -41,14 +38,11 @@ export function CommonSelect({
       name={name}
       control={control}
       render={({ field, fieldState }) => (
-        <div className={cn("flex flex-col gap-2", containerClassName)}>
+        <div className={cn('flex flex-col gap-2', containerClassName)}>
           {/* ---- LABEL ---- */}
           {label && (
-            <label
-              htmlFor={name}
-              className="text-sm font-medium text-[#7C89AE]"
-            >
-              {label} {required && <span className="text-red-500">*</span>}
+            <label htmlFor={name} className='font-medium text-[#7C89AE] text-sm'>
+              {label} {required && <span className='text-red-500'>*</span>}
             </label>
           )}
           {/* ---- SELECT ---- */}
@@ -59,30 +53,21 @@ export function CommonSelect({
             placeholder={placeholder}
             classNames={{
               control: () =>
-                cn(
-                  "!min-h-[44px] rounded-sm border !border-[#FFFFFF33] !bg-[#0B1D4E] !text-white",
-                  triggerClassName
-                ),
+                cn('!min-h-[44px] rounded-sm border !border-[#FFFFFF33] !bg-[#0B1D4E] !text-white', triggerClassName),
               menu: () =>
-                cn(
-                  "max-h-72 overflow-y-hidden border !border-[#FFFFFF33] !bg-[#0B1D4E] !text-white",
-                  contentClassName
-                ),
+                cn('max-h-72 overflow-y-hidden border !border-[#FFFFFF33] !bg-[#0B1D4E] !text-white', contentClassName),
               option: (state) => {
-                return cn(
-                  "!text-white hover:!bg-[#00154A] active:!bg-[#00154A] selected:!bg-[#00154A]",
-                  {
-                    "!bg-[#00154A]": state.isSelected,
-                    "!bg-[#0B1D4E]": state.isFocused,
-                  }
-                );
+                return cn('!text-white hover:!bg-[#00154A] active:!bg-[#00154A] selected:!bg-[#00154A]', {
+                  '!bg-[#00154A]': state.isSelected,
+                  '!bg-[#0B1D4E]': state.isFocused,
+                });
               },
               singleValue(props) {
-                return cn("!text-white", props.className);
+                return cn('!text-white', props.className);
               },
-              indicatorSeparator: () => cn("!hidden"),
-              placeholder: () => cn("!text-white"),
-              input: () => cn("!text-white"),
+              indicatorSeparator: () => cn('!hidden'),
+              placeholder: () => cn('!text-white'),
+              input: () => cn('!text-white'),
             }}
             filterOption={createFilter({ ignoreAccents: false })}
             options={options}
@@ -91,12 +76,8 @@ export function CommonSelect({
           />
 
           {/* ---- DESCRIPTION / ERROR ---- */}
-          {description && (
-            <p className="text-xs text-[#7C89AE]">{description}</p>
-          )}
-          {fieldState.error && (
-            <p className="text-xs text-red-500">{fieldState.error.message}</p>
-          )}
+          {description && <p className='text-[#7C89AE] text-xs'>{description}</p>}
+          {fieldState.error && <p className='text-red-500 text-xs'>{fieldState.error.message}</p>}
         </div>
       )}
     />

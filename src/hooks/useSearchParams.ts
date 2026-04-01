@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { useSearchParams as useSearchParamsNextJs } from 'next/navigation'
+import { useSearchParams as useSearchParamsNextJs } from 'next/navigation';
 
 const useSearchParams = () => {
-  const searchParams = useSearchParamsNextJs()
+  const searchParams = useSearchParamsNextJs();
   return {
     searchParams,
-  }
-}
-export default useSearchParams
+  };
+};
+export default useSearchParams;

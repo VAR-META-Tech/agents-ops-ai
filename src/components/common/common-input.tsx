@@ -1,11 +1,10 @@
-import type { InputHTMLAttributes } from "react";
-import { Controller, useFormContext } from "react-hook-form";
+import type { InputHTMLAttributes } from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
 
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
+import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
-interface CommonInputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "name"> {
+interface CommonInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'name'> {
   name: string;
   label?: string;
   description?: string;
@@ -32,13 +31,10 @@ export const CommonInput = ({
         const { ref: fieldRef, ...fieldProps } = field;
 
         return (
-          <div className={cn("flex flex-col gap-2", containerClassName)}>
+          <div className={cn('flex flex-col gap-2', containerClassName)}>
             {label && (
-              <label
-                className="text-sm font-medium text-[#7C89AE]"
-                htmlFor={name}
-              >
-                {label} {required && <span className="text-red-500">*</span>}
+              <label className='font-medium text-[#7C89AE] text-sm' htmlFor={name}>
+                {label} {required && <span className='text-red-500'>*</span>}
               </label>
             )}
             <Input
@@ -46,18 +42,14 @@ export const CommonInput = ({
               ref={fieldRef}
               aria-invalid={fieldState.invalid}
               className={cn(
-                "text-white border border-[#FFFFFF33] rounded-sm h-11 bg-[#0B1D4E] placeholder:text-white",
+                'h-11 rounded-sm border border-[#FFFFFF33] bg-[#0B1D4E] text-white placeholder:text-white',
                 className
               )}
               {...fieldProps}
               {...props}
             />
-            {description && (
-              <p className="text-xs text-[#7C89AE]">{description}</p>
-            )}
-            {fieldState.error && (
-              <p className="text-xs text-red-500">{fieldState.error.message}</p>
-            )}
+            {description && <p className='text-[#7C89AE] text-xs'>{description}</p>}
+            {fieldState.error && <p className='text-red-500 text-xs'>{fieldState.error.message}</p>}
           </div>
         );
       }}

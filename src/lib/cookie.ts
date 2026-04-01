@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
 const COOKIES = {
   TOKEN: 'token',
@@ -6,18 +6,18 @@ const COOKIES = {
   ADDRESS: 'address',
   PRIVY_TOKEN: 'privy-token',
   PRIVY_SESSION: 'privy-session',
-}
+};
 
 const setCookie = (key: string, value: string) => {
-  Cookies.set(key, value)
-}
+  Cookies.set(key, value);
+};
 
 const getCookie = (key: string) => {
-  return Cookies.get(key)
-}
+  return Cookies.get(key);
+};
 
 const removeCookie = (key: string) => {
-  Cookies.remove(key)
-}
+  Cookies.remove(key);
+};
 
-export { COOKIES, getCookie, removeCookie, setCookie }
+export { COOKIES, getCookie, removeCookie, setCookie };

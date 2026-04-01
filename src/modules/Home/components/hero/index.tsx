@@ -1,28 +1,21 @@
-import agentHeroText from "@/assets/images/agent-hero-text.png";
-import circleFrame from "@/assets/images/circle-frame-white-v2.png";
-import heroImage from "@/assets/images/hero-image.png";
-import linearBg from "@/assets/images/linear-blur.png";
-import netBackground from "@/assets/images/net-background.png";
-import { CommonTitle } from "@/components/common/common-title";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { BtnGroup } from "./components/btn-group";
-import { LottieComponent } from "./components/lottie";
+import agentHeroText from '@/assets/images/agent-hero-text.png';
+import circleFrame from '@/assets/images/circle-frame-white-v2.png';
+import heroImage from '@/assets/images/hero-image.png';
+import linearBg from '@/assets/images/linear-blur.png';
+import netBackground from '@/assets/images/net-background.png';
+import { CommonTitle } from '@/components/common/common-title';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import { BtnGroup } from './components/btn-group';
+import { LottieComponent } from './components/lottie';
 
 export const Hero = () => {
   return (
-    <div className="relative mb-24">
+    <div className='relative mb-24'>
       <div>
-        <Image
-          src={linearBg.src}
-          className="object-cover"
-          fill
-          alt="Hero"
-          sizes="100vw"
-          priority
-        />
+        <Image src={linearBg.src} className='object-cover' fill alt='Hero' sizes='100vw' priority />
       </div>
-      <div className="pt-20 min-w-[320px]">
+      <div className='min-w-[320px] pt-20'>
         {/* <Image
           src={circleFrame.src}
           className="object-cover absolute top-[50%] left-[50%] translate-x-[calc(-50%)] translate-y-[calc(-50%+500px)] animate-spin-slow min-w-[1150px] min-h-[1150px]"
@@ -32,22 +25,19 @@ export const Hero = () => {
           priority
         /> */}
         <div>
-          <div className="relative z-10 min-w-[320px] max-sm:px-3">
-            <h1 className="text-5xl font-semibold flex items-center justify-center gap-2 max-lg:flex-col max-lg:text-3xl">
+          <div className='relative z-10 min-w-[320px] max-sm:px-3'>
+            <h1 className='flex items-center justify-center gap-2 font-semibold text-5xl max-lg:flex-col max-lg:text-3xl'>
               Unlock the Power of
               <img
                 src={agentHeroText.src}
-                alt="AI Agents"
-                className="mt-2 max-lg:w-[156px] object-contain max-lg:mb-2"
+                alt='AI Agents'
+                className='mt-2 object-contain max-lg:mb-2 max-lg:w-[156px]'
               />
             </h1>
-            <CommonTitle
-              as="h2"
-              className="text-5xl text-center mt-2 max-lg:text-3xl"
-            >
+            <CommonTitle as='h2' className='mt-2 text-center text-5xl max-lg:text-3xl'>
               Transform Your Business Today
             </CommonTitle>
-            <p className="text-2xl font-normal leading-9 text-center mt-6 max-lg:text-lg">
+            <p className='mt-6 text-center font-normal text-2xl leading-9 max-lg:text-lg'>
               AI agents can automate 60-70% of employee time spent on tasks
             </p>
           </div>
@@ -58,11 +48,11 @@ export const Hero = () => {
         </div>
       </div>
 
-      <div className="h-[550px] relative mt-20 max-xl:h-fit max-xl:pb-8">
+      <div className='relative mt-20 h-[550px] max-xl:h-fit max-xl:pb-8'>
         <div
           className={cn(
-            "border border-[#E6E6E6] rounded-2xl sm:rounded-[32px] lg:rounded-[48px] p-4 sm:p-6 bg-cover bg-no-repeat absolute left-1/2 -translate-x-1/2 top-[0%]",
-            "h-fit bg-white w-[min(1280px,calc(100%-2rem))] sm:w-[min(1280px,calc(100%-3rem))] max-h-[620px] max-xl:relative ",
+            '-translate-x-1/2 absolute top-[0%] left-1/2 rounded-2xl border border-[#E6E6E6] bg-cover bg-no-repeat p-4 sm:rounded-[32px] sm:p-6 lg:rounded-[48px]',
+            'h-fit max-h-[620px] w-[min(1280px,calc(100%-2rem))] bg-white max-xl:relative sm:w-[min(1280px,calc(100%-3rem))]'
           )}
           style={{
             backgroundImage: `url(${netBackground.src || netBackground})`,
@@ -70,8 +60,8 @@ export const Hero = () => {
         >
           <Image
             src={heroImage.src}
-            className="object-cover relative rounded-xl sm:rounded-2xl lg:rounded-[32px] w-full h-auto max-h-[min(572px,52vh)] sm:max-h-[572px]"
-            alt="Hero"
+            className='relative h-auto max-h-[min(572px,52vh)] w-full rounded-xl object-cover sm:max-h-[572px] sm:rounded-2xl lg:rounded-[32px]'
+            alt='Hero'
             width={1232}
             height={572}
           />
@@ -81,8 +71,8 @@ export const Hero = () => {
   );
 };
 
-
-{/* <div className="h-[620px]">
+{
+  /* <div className="h-[620px]">
         <div
           className={cn(
             "border border-[#E6E6E6] rounded-2xl sm:rounded-[32px] lg:rounded-[48px] p-4 sm:p-6 bg-cover bg-no-repeat",
@@ -101,4 +91,5 @@ export const Hero = () => {
             height={572}
           />
         </div>
-      </div> */}
+      </div> */
+}

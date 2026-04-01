@@ -1,11 +1,11 @@
 import axios, {
-  AxiosResponse,
-  InternalAxiosRequestConfig,
+  type AxiosResponse,
+  type InternalAxiosRequestConfig,
   type AxiosInstance,
   type AxiosRequestConfig,
-} from "axios";
+} from 'axios';
 
-import { env } from "@/utils/const";
+import { env } from '@/utils/const';
 
 const handleSuccess = (res: AxiosResponse) => {
   return res;
@@ -27,6 +27,6 @@ blogRequest.interceptors.request.use(
   async (config: InternalAxiosRequestConfig) => {
     return config;
   },
-  (error) => Promise.reject(error),
+  (error) => Promise.reject(error)
 );
 blogRequest.interceptors.response.use(handleSuccess, handleError);

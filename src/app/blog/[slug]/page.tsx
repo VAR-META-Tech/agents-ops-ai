@@ -1,17 +1,14 @@
-import { getPostBySlug } from "@/api/blog/requests";
-import { APP_URL, siteConfig } from "@/config/site";
-import { Blog } from "@/modules/blog";
-import { convert } from "html-to-text";
-import { Metadata, ResolvingMetadata } from "next";
+import { getPostBySlug } from '@/api/blog/requests';
+import { APP_URL, siteConfig } from '@/config/site';
+import { Blog } from '@/modules/blog';
+import { convert } from 'html-to-text';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
   const { slug } = await params;
 
   const post = await getPostBySlug(slug);
@@ -35,7 +32,7 @@ export async function generateMetadata(
       // images: post?.featured_media || [...previousImages],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: title,
       description: description,
       // images: post?.featured_media || [...previousImages],

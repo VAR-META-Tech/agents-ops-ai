@@ -1,14 +1,14 @@
-import { CommonTitle } from "@/components/common/common-title";
-import { cn } from "@/lib/utils";
-import React from "react";
-import { BlogList } from "./components/blog-list";
+import { CommonTitle } from '@/components/common/common-title';
+import { cn } from '@/lib/utils';
+import React from 'react';
+import { BlogList } from './components/blog-list';
 
 export const FQA = async () => {
   return (
-    <div className="bg-white px-6">
-      <div className="max-w-[1280px] mx-auto pb-20 pt-36">
-        <div className="mb-10 pl-6 max-md:pl-3">
-          <CommonTitle as="h2" className="max-lg:text-3xl text-center">
+    <div className='bg-white px-6'>
+      <div className='mx-auto max-w-[1280px] pt-36 pb-20'>
+        <div className='mb-10 pl-6 max-md:pl-3'>
+          <CommonTitle as='h2' className='text-center max-lg:text-3xl'>
             FQA
           </CommonTitle>
         </div>

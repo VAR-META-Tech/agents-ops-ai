@@ -1,20 +1,20 @@
-import MainLayout from "@/components/layouts/MainLayout";
-import { fontSora } from "@/config/fonts";
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-import type { Metadata, Viewport } from "next";
-import Script from "next/script";
-import { Toaster } from "sonner";
-import "../styles/globals.css";
-import Providers from "./providers";
-import { StructuredData } from "./structured-data";
+import MainLayout from '@/components/layouts/MainLayout';
+import { fontSora } from '@/config/fonts';
+import { siteConfig } from '@/config/site';
+import { cn } from '@/lib/utils';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
+import { Toaster } from 'sonner';
+import '../styles/globals.css';
+import Providers from './providers';
+import { StructuredData } from './structured-data';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.appUrl),
   title: {
     default: siteConfig.name,
-    template: "%s | " + siteConfig.name,
+    template: '%s | ' + siteConfig.name,
   },
   generator: 'Next.js',
   description: siteConfig.description,
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     // google: 'your-verification-code',
   },
   openGraph: {
-    type: "website",
+    type: 'website',
     url: siteConfig.appUrl,
     title: siteConfig.name,
     description: siteConfig.description,
@@ -58,26 +58,26 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
     creator: `@${siteConfig.name}`,
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-    shortcut: "/favicon-96x96.png",
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon-96x96.png',
   },
-  manifest: "/site.webmanifest",
+  manifest: '/site.webmanifest',
 };
 
 export const viewport: Viewport = {
-  width: "device-width",
+  width: 'device-width',
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
 };
 
@@ -85,13 +85,10 @@ type RootLayoutProps = Readonly<{ children: React.ReactNode }>;
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="vi" suppressHydrationWarning>
+    <html lang='vi' suppressHydrationWarning>
       <head>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=G-83DXNSST4Q`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=G-83DXNSST4Q`} strategy='afterInteractive' />
+        <Script id='google-analytics' strategy='afterInteractive'>
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -101,22 +98,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </Script>
       </head>
 
-      <body
-        suppressHydrationWarning
-        className={cn(
-          "min-h-screen bg-background",
-          fontSora.variable,
-          "font-sora"
-        )}
-      >
+      <body suppressHydrationWarning className={cn('min-h-screen bg-background', fontSora.variable, 'font-sora')}>
         <Providers>
           <MainLayout>{children}</MainLayout>
         </Providers>
 
         <Toaster />
 
-        <GoogleAnalytics gaId="G-83DXNSST4Q" />
-        <GoogleTagManager gtmId="G-83DXNSST4Q" />
+        <GoogleAnalytics gaId='G-83DXNSST4Q' />
+        <GoogleTagManager gtmId='G-83DXNSST4Q' />
         <StructuredData />
       </body>
     </html>

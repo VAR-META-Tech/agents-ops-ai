@@ -1,57 +1,55 @@
-import circleFrame from "@/assets/images/circle-frame.png";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { Contact } from "./components/contact";
-import { FQA } from "./components/fqa";
-import { Hero } from "./components/hero";
-import { HowItWork } from "./components/how-it-work";
-import { OurExpertise } from "./components/our-expertise";
-import { OurProcess } from "./components/our-process";
-import { OurServices } from "./components/our-services";
-import { OurTeam } from "./components/our-team";
-import { TechStack } from "./components/tech-stack";
-import { Testimonials } from "./components/testimonials";
-import { WhatMakesUsStandout } from "./components/what-make-us-standout";
+import circleFrame from '@/assets/images/circle-frame.png';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import { Contact } from './components/contact';
+import { FQA } from './components/fqa';
+import { Hero } from './components/hero';
+import { HowItWork } from './components/how-it-work';
+import { OurExpertise } from './components/our-expertise';
+import { OurProcess } from './components/our-process';
+import { OurServices } from './components/our-services';
+import { OurTeam } from './components/our-team';
+import { TechStack } from './components/tech-stack';
+import { Testimonials } from './components/testimonials';
+import { WhatMakesUsStandout } from './components/what-make-us-standout';
 
 const Home = () => {
   return (
-    <main className="bg-[#F9F9F9]">
+    <main className='bg-[#F9F9F9]'>
       <Hero />
-      <section id="services" aria-label="Our Services">
+      <section id='services' aria-label='Our Services'>
         <OurServices />
       </section>
-      <section id="expertise" aria-label="Our Expertise">
+      <section id='expertise' aria-label='Our Expertise'>
         <OurExpertise />
       </section>
-      <section id="our-strength" aria-label="What Makes Us Standout">
+      <section id='our-strength' aria-label='What Makes Us Standout'>
         <WhatMakesUsStandout />
       </section>
-      <section id="how-it-work" aria-label="How It Works">
+      <section id='how-it-work' aria-label='How It Works'>
         <HowItWork />
       </section>
-      <section id="our-process" aria-label="Our Process">
+      <section id='our-process' aria-label='Our Process'>
         <OurProcess />
       </section>
-      <section id="our-team" aria-label="Our Team">
+      <section id='our-team' aria-label='Our Team'>
         <OurTeam />
       </section>
       <Testimonials />
       <FQA />
       {/* <TechStack /> */}
       <section
-        id="contact"
-        aria-label="Contact Us"
+        id='contact'
+        aria-label='Contact Us'
         className={cn(
-          "bg-[radial-gradient(100%_100%_at_50%_100.08%,_#001857_0%,_#001344_100%)]",
-          "min-h-[630px] px-20 py-24 overflow-hidden relative max-sm:px-6"
+          'bg-[radial-gradient(100%_100%_at_50%_100.08%,_#001857_0%,_#001344_100%)]',
+          'relative min-h-[630px] overflow-hidden px-20 py-24 max-sm:px-6'
         )}
       >
         <Image
-          className={cn(
-            "absolute bottom-[-880px] left-[50%] translate-x-[-50%] z-0 max-lg:hidden"
-          )}
+          className={cn('absolute bottom-[-880px] left-[50%] z-0 translate-x-[-50%] max-lg:hidden')}
           src={circleFrame.src}
-          alt="Circle Frame"
+          alt='Circle Frame'
           width={1150}
           height={1150}
           priority

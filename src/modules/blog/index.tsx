@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { usePost } from "@/api/blog/queries";
-import { handleScroll } from "@/lib/utils";
-import { BlogBreadcrumb } from "@/modules/blog/components/blog-breadcrumb";
-import { useParams } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
-import { BlogContent } from "./components/blog-content";
-import { TableOfContent } from "./components/table-of-content";
+import { usePost } from '@/api/blog/queries';
+import { handleScroll } from '@/lib/utils';
+import { BlogBreadcrumb } from '@/modules/blog/components/blog-breadcrumb';
+import { useParams } from 'next/navigation';
+import React, { useEffect, useRef, useState } from 'react';
+import { BlogContent } from './components/blog-content';
+import { TableOfContent } from './components/table-of-content';
 
 export const generateId = (text: string) => {
   return text
     .toLowerCase()
-    .replace(/^[^a-z]+/, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/^[^a-z]+/, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 };
 
 export interface TOC {
@@ -28,7 +28,7 @@ export const Blog = () => {
   const { data: post, isPending, isError, error } = usePost(slug as string);
   const [active, setActive] = useState<string | null>(null);
   const [scrolling, setScrolling] = useState<boolean>(true);
-  console.log("🚀 ~ Blog ~ active:", active)
+  console.log('🚀 ~ Blog ~ active:', active);
   const [toc, setToc] = useState<TOC[]>([]);
 
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -45,7 +45,7 @@ export const Blog = () => {
 
   useEffect(() => {
     if (contentRef.current) {
-      const headings = contentRef.current.querySelectorAll("h2, h3");
+      const headings = contentRef.current.querySelectorAll('h2, h3');
       const tocItems: TOC[] = [];
       let currentH2: TOC | null = null;
 
@@ -54,8 +54,8 @@ export const Blog = () => {
         const id = generateId(text);
 
         if (id) {
-          heading.setAttribute("id", id);
-          const level = Number(heading.tagName.replace("H", ""));
+          heading.setAttribute('id', id);
+          const level = Number(heading.tagName.replace('H', ''));
 
           if (level === 2) {
             currentH2 = { id, text, level, subItems: [] } as TOC;
@@ -119,18 +119,18 @@ export const Blog = () => {
   }
 
   if (isError || !post) {
-    return <div>{error?.message ?? "Post not found"}</div>;
+    return <div>{error?.message ?? 'Post not found'}</div>;
   }
 
   return (
-    <div className="max-w-[1280px] w-full mx-auto mt-10 flex justify-between gap-10">
-      <div className="max-w-[960px] w-full">
+    <div className='mx-auto mt-10 flex w-full max-w-[1280px] justify-between gap-10'>
+      <div className='w-full max-w-[960px]'>
         <BlogBreadcrumb title={post.title} />
         <BlogContent post={post} contentRef={contentRef} />
       </div>
 
       {/* self-start: default flex stretch makes this column as tall as the article, which breaks sticky */}
-      <div className="sticky top-[92px] w-full max-w-[256px] shrink-0 self-start">
+      <div className='sticky top-[92px] w-full max-w-[256px] shrink-0 self-start'>
         <TableOfContent toc={toc} active={active} handleTarget={handleTarget} />
       </div>
     </div>

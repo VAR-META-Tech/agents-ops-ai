@@ -1,4 +1,4 @@
-import type { FC, PropsWithChildren, SVGProps } from "react";
+import type { FC, PropsWithChildren, SVGProps } from 'react';
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
@@ -35,4 +35,4 @@ export interface IPaging {
   total?: number;
 }
 
-export type TCommonSort = "ASC" | "DESC";
+export type TCommonSort = 'ASC' | 'DESC';

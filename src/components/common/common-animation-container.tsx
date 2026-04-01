@@ -1,23 +1,17 @@
-"use client";
+'use client';
 
-import type { MotionProps } from "motion/react";
-import { motion } from "motion/react";
-import React from "react";
+import type { MotionProps } from 'motion/react';
+import { motion } from 'motion/react';
+import React from 'react';
 
-export interface Props extends Omit<MotionProps, "children"> {
+export interface Props extends Omit<MotionProps, 'children'> {
   delay?: number;
   reverse?: boolean;
   className?: string;
   children?: React.ReactNode;
 }
 
-const CommonAnimationContainer: React.FC<Props> = ({
-  children,
-  delay,
-  reverse,
-  className,
-  ...motionProps
-}) => {
+const CommonAnimationContainer: React.FC<Props> = ({ children, delay, reverse, className, ...motionProps }) => {
   return (
     <motion.div
       className={className}
@@ -28,8 +22,8 @@ const CommonAnimationContainer: React.FC<Props> = ({
       transition={{
         duration: 0.2,
         delay: delay,
-        ease: "easeInOut",
-        type: "spring",
+        ease: 'easeInOut',
+        type: 'spring',
         stiffness: 260,
         damping: 20,
       }}

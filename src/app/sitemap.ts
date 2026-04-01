@@ -1,6 +1,6 @@
-import { siteConfig } from "@/config/site";
-import { ROUTES } from "@/utils/routes";
-import type { MetadataRoute } from "next";
+import { siteConfig } from '@/config/site';
+import { ROUTES } from '@/utils/routes';
+import type { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       {
         url: siteConfig.appUrl,
         lastModified: new Date(),
-        changeFrequency: "weekly",
+        changeFrequency: 'weekly',
         priority: 1.0,
       },
     ];

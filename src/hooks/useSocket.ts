@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { env } from '@/utils/const'
-import { useCallback, useEffect, useState } from 'react'
-import { io } from 'socket.io-client'
+import { env } from '@/utils/const';
+import { useCallback, useEffect, useState } from 'react';
+import { io } from 'socket.io-client';
 
 export enum SocketEvent {
   CONNECT = 'connect',
@@ -15,7 +15,7 @@ export enum SocketEvent {
   ERROR = 'error',
 }
 
-export type SocketEventParams = `${SocketEvent}`
+export type SocketEventParams = `${SocketEvent}`;
 
 const socket = env.SOCKET_URL
   ? io(env.SOCKET_URL, {
@@ -25,69 +25,69 @@ const socket = env.SOCKET_URL
       reconnectionDelay: 1000,
       reconnectionDelayMax: 5000,
     })
-  : null
+  : null;
 
 export const useSocket = () => {
-  const [connected, setConnected] = useState(false)
+  const [connected, setConnected] = useState(false);
 
   const connect = useCallback(() => {
-    if (!socket) return
-    socket.connect()
-  }, [])
+    if (!socket) return;
+    socket.connect();
+  }, []);
 
   useEffect(() => {
     if (!socket) {
-      console.warn('Socket not initialized - WS_URL is missing')
-      return
+      console.warn('Socket not initialized - WS_URL is missing');
+      return;
     }
 
     const handleDisconnect = () => {
-      console.log('socket disconnected')
-      setConnected(false)
-    }
+      console.log('socket disconnected');
+      setConnected(false);
+    };
     const handleConnect = () => {
-      console.log('socket connected')
-      setConnected(true)
-    }
+      console.log('socket connected');
+      setConnected(true);
+    };
 
-    socket.on('disconnect', handleDisconnect)
-    socket.on('connect', handleConnect)
+    socket.on('disconnect', handleDisconnect);
+    socket.on('connect', handleConnect);
 
     // Set initial state if already connected
     if (socket.connected) {
-      setConnected(true)
+      setConnected(true);
     }
 
     return () => {
-      socket.off('disconnect', handleDisconnect)
-      socket.off('connect', handleConnect)
-    }
-  }, [])
+      socket.off('disconnect', handleDisconnect);
+      socket.off('connect', handleConnect);
+    };
+  }, []);
 
   const disconnect = useCallback(() => {
-    if (!socket) return
-    socket.disconnect()
-  }, [])
+    if (!socket) return;
+    socket.disconnect();
+  }, []);
 
   const on = useCallback(<T>(event: SocketEventParams, callback: (data: T) => void) => {
-    if (!socket) return
+    if (!socket) return;
     socket.on(event, (data: T) => {
-      callback(data)
-    })
-  }, [])
+      callback(data);
+    });
+  }, []);
 
   const off = useCallback(<T>(event: SocketEventParams, callback: (data: T) => void) => {
-    if (!socket) return
-    socket.off(event, callback)
-  }, [])
+    if (!socket) return;
+    socket.off(event, callback);
+  }, []);
 
   const subscribe = useCallback((event: SocketEventParams) => {
-    if (!socket) return
+    if (!socket) return;
     switch (event) {
       default:
-        break
+        break;
     }
-  }, [])
+  }, []);
 
   return {
     connect,
@@ -96,5 +96,5 @@ export const useSocket = () => {
     on,
     off,
     connected,
-  }
-}
+  };
+};

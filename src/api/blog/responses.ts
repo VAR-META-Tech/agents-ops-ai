@@ -1,11 +1,11 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
-import { IBlogDTOResponse, IBlogResponse } from "./types";
+import type { IBlogDTOResponse, IBlogResponse } from './types';
 
 export const technologies: Record<number, string> = {
-  25: "AI",
-  1: "Blockchain",
-  3: "AR/VR",
+  25: 'AI',
+  1: 'Blockchain',
+  3: 'AR/VR',
 };
 
 export class BlogResponse implements IBlogResponse {
@@ -28,9 +28,7 @@ export class BlogResponse implements IBlogResponse {
     this.content = post.content.rendered;
     this.slug = post.slug;
     this.link = post.link;
-    this.categoryNames = (post.categories as number[]).map(
-      (category) => technologies[category] ?? "Unknown"
-    );
+    this.categoryNames = (post.categories as number[]).map((category) => technologies[category] ?? 'Unknown');
     this.author = {
       name: author?.name || 'Varmeta',
       image: author?.avatar_urls?.['96'] || 'https://via.placeholder.com/96x96',
