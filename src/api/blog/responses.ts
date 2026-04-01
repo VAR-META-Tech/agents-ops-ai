@@ -33,6 +33,6 @@ export class BlogResponse implements IBlogResponse {
       name: author?.name || 'Varmeta',
       image: author?.avatar_urls?.['96'] || 'https://via.placeholder.com/96x96',
     };
-    this.date = dayjs(post?.date).format('MMM, DD, YYYY');
+    this.date = dayjs(post?.date).format('MMM, DD YYYY');
   }
 }

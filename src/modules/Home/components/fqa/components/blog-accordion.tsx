@@ -26,10 +26,15 @@ const getBlogLink = (slug: string) => {
 };
 
 export function BlogAccordion({ posts }: BlogAccordionProps) {
-  const defaultOpen = posts[0]?.id.toString();
+  // const defaultOpen = posts[0]?.id.toString();
 
   return (
-    <Accordion type='single' collapsible defaultValue={defaultOpen} className='mx-auto w-full max-w-[960px]'>
+    <Accordion
+      type='single'
+      collapsible
+      // defaultValue={posts[0]?.id.toString()}
+      className='mx-auto w-full max-w-[960px]'
+    >
       {posts.map((post) => (
         <AccordionItem value={post.id.toString()} key={post.id}>
           <div className='flex items-center justify-between'>

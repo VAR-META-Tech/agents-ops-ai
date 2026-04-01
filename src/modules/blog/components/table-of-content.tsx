@@ -1,3 +1,4 @@
+import { CommonTitle } from '@/components/common/common-title';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn, handleScroll } from '@/lib/utils';
 import React from 'react';
@@ -47,10 +48,12 @@ export const TableOfContent = ({
   active: string | null;
   handleTarget: (id: string) => void;
 }) => {
-  console.log('🚀 ~ TableOfContent ~ toc[0]?:', active);
-
   return (
     <div>
+      <CommonTitle as='h2' className='mb-4 pl-5 font-normal text-[#494949] text-[14px] leading-[26px]'>
+        Table of Contents
+      </CommonTitle>
+
       <Tabs value={active?.replace('#', '') || toc[0]?.id} defaultValue={toc[0]?.id} orientation='vertical'>
         <TabsList className={tocListLineVariant}>
           {toc.map((item) => (

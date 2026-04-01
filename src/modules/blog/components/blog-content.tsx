@@ -26,7 +26,7 @@ export const BlogContent = ({ post, contentRef }: BlogContentProps) => {
 
   return (
     <section className='w-full flex-1 border-primary-950/10 border-x px-4 pt-[18px] lg:pr-[34px] lg:pl-5'>
-      <h1 className='font-semibold text-5xl leading-14'>{convert(title)}</h1>
+      <h1 className='font-semibold text-5xl leading-14 max-xl:text-4xl max-xl:leading-12'>{convert(title)}</h1>
       <div className='flex items-center gap-3 py-3'>
         <p className='text-primary-950/60 capitalize'>
           Posted by <span className='font-bold text-lg'>{author?.name}</span>

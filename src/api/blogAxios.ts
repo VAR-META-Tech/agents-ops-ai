@@ -1,9 +1,4 @@
-import axios, {
-  type AxiosResponse,
-  type InternalAxiosRequestConfig,
-  type AxiosInstance,
-  type AxiosRequestConfig,
-} from 'axios';
+import axios, { type AxiosResponse, type InternalAxiosRequestConfig } from 'axios';
 
 import { env } from '@/utils/const';
 

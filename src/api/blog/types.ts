@@ -1,3 +1,5 @@
+import type { TCommonSort } from '@/types';
+
 export interface IBlogDTOResponse {
   id: number;
   date: string; // ISO 8601 in site's timezone
@@ -106,4 +108,13 @@ export interface IBlogResponse {
     image: string;
   };
   date: string;
+}
+
+export interface IBlogListParams {
+  per_page?: number;
+  page?: number;
+  category_id?: string | number;
+  search?: string;
+  orderby?: string;
+  order?: TCommonSort;
 }

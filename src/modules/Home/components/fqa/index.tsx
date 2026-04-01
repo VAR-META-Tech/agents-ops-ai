@@ -5,8 +5,8 @@ import { BlogList } from './components/blog-list';
 
 export const FQA = async () => {
   return (
-    <div className='bg-white px-6'>
-      <div className='mx-auto max-w-[1280px] pt-36 pb-20'>
+    <div className='bg-[#F9F9F9] px-6'>
+      <div className='mx-auto max-w-[1280px] pt-24 pb-24'>
         <div className='mb-10 pl-6 max-md:pl-3'>
           <CommonTitle as='h2' className='text-center max-lg:text-3xl'>
             FQA

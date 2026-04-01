@@ -21,7 +21,7 @@ export const BlogBreadcrumb = ({ title }: { title: string }) => {
             'font-bold text-base leading-[26px]'
           )}
         >
-          <div dangerouslySetInnerHTML={{ __html: title }} />
+          <div className='whitespace-break-spaces' dangerouslySetInnerHTML={{ __html: title }} />
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
