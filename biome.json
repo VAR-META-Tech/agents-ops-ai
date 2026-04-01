@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
   "vcs": {
     "enabled": false,
     "clientKind": "git",
@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["dist", "build", "out", "node_modules"]
+    "includes": ["**", "!**/dist", "!**/build", "!**/out", "!**/node_modules"]
   },
   "formatter": {
     "enabled": true,
@@ -19,34 +19,34 @@
     "lineWidth": 120,
     "attributePosition": "auto",
     "bracketSpacing": true,
-    "ignore": [
-      "out/**",
-      ".next/**",
-      "dist/**",
-      "**/dist",
-      "**/node_modules",
-      "**/.gitignore",
-      "**/.husky",
-      "**/.nvmrc",
-      "**/LICENSE",
-      "**/*.md",
-      "**/pnpm-lock.yaml"
+    "includes": [
+      "**",
+      "!**/out/**",
+      "!**/.next/**",
+      "!**/dist/**",
+      "!**/dist",
+      "!**/node_modules",
+      "!**/.gitignore",
+      "!**/.husky",
+      "!**/.nvmrc",
+      "!**/LICENSE",
+      "!**/*.md",
+      "!**/pnpm-lock.yaml"
     ]
   },
-  "organizeImports": { "enabled": true },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": false,
-      "a11y": { "noBlankTarget": "error" },
+      "a11y": {},
       "complexity": {
         "noBannedTypes": "off",
         "noExtraBooleanCast": "error",
-        "noMultipleSpacesInRegularExpressionLiterals": "error",
         "noUselessCatch": "error",
         "noUselessThisAlias": "error",
         "noUselessTypeConstraint": "error",
-        "noWith": "error"
+        "noAdjacentSpacesInRegex": "error"
       },
       "correctness": {
         "noChildrenProp": "error",
@@ -57,7 +57,6 @@
         "noGlobalObjectCalls": "error",
         "noInnerDeclarations": "error",
         "noInvalidConstructorSuper": "error",
-        "noNewSymbol": "error",
         "noNonoctalDecimalEscape": "error",
         "noPrecisionLoss": "error",
         "noSelfAssign": "error",
@@ -70,20 +69,22 @@
         "noUnsafeOptionalChaining": "error",
         "noUnusedLabels": "warn",
         "noUnusedVariables": "off",
-        "useArrayLiterals": "off",
         "useHookAtTopLevel": "error",
         "useIsNan": "error",
         "useJsxKeyInIterable": "error",
         "useValidForDirection": "error",
         "useYield": "error",
-        "noUnusedImports": "warn"
+        "noUnusedImports": "warn",
+        "noInvalidBuiltinInstantiation": "error",
+        "useValidTypeof": "error"
       },
-      "security": { "noDangerouslySetInnerHtmlWithChildren": "error" },
+      "security": { "noDangerouslySetInnerHtmlWithChildren": "error", "noBlankTarget": "error" },
       "style": {
         "noNamespace": "error",
         "useAsConstAssertion": "error",
         "useBlockStatements": "off",
-        "useImportType": "error"
+        "useImportType": "error",
+        "useArrayLiterals": "off"
       },
       "nursery": {
         "useSortedClasses": {
@@ -122,10 +123,18 @@
         "noUnsafeDeclarationMerging": "error",
         "noUnsafeNegation": "error",
         "useGetterReturn": "error",
-        "useValidTypeof": "error"
+        "noWith": "error"
       }
     },
-    "ignore": ["out/**", ".next/**", "dist/**", "**/dist", "**/node_modules", "**/tailwind.config.ts"]
+    "includes": [
+      "**",
+      "!**/out/**",
+      "!**/.next/**",
+      "!**/dist/**",
+      "!**/dist",
+      "!**/node_modules",
+      "!**/tailwind.config.ts"
+    ]
   },
   "javascript": {
     "jsxRuntime": "reactClassic",
@@ -148,11 +157,11 @@
   },
   "overrides": [
     {
-      "include": ["tsconfig*.json"],
+      "includes": ["**/tsconfig*.json"],
       "javascript": { "formatter": { "trailingCommas": "none" } }
     },
     {
-      "include": ["*.spec.ts", "*.spec.tsx", "*.test.ts", "*.test.tsx"],
+      "includes": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
       "javascript": {
         "globals": ["afterEach", "afterAll", "beforeEach", "beforeAll", "describe", "expect", "it", "test", "jest"]
       }
