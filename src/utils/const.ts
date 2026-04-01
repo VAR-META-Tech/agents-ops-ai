@@ -4,6 +4,8 @@ export const env = {
   API_VERSION: process.env.NEXT_PUBLIC_API_VERSION || "/v1",
   API_PREFIX: process.env.NEXT_PUBLIC_API_PREFIX || "/api",
   SOCKET_URL: process.env.NEXT_PUBLIC_SOCKET_URL || "",
+  BLOG_API_URL: process.env.NEXT_PUBLIC_BLOG_API_URL || "",
+  BLOG_API_PREFIX: process.env.NEXT_PUBLIC_BLOG_API_PREFIX || "/wp-json/wp/v2",
 };
 
 export const NUMBER_FORMAT_LOOK_UP = [

@@ -23,13 +23,17 @@ import file from "./svg/file.svg";
 import github from "./svg/github.svg";
 import globe from "./svg/globe.svg";
 import google from "./svg/google.svg";
+import homeLineIcon from "./svg/home-line.svg";
 import locationIcon from "./svg/location-icon.svg";
 import microsoft from "./svg/microsoft.svg";
+import minusCircleIcon from "./svg/minus-circle.svg";
 import phoneIcon from "./svg/phone-icon.svg";
+import plusCircleIcon from "./svg/plus-circle.svg";
 import questionBookIcon from "./svg/question-book-icon.svg";
 import searchBookIcon from "./svg/search-book-icon.svg";
 import slidersIcon from "./svg/sliders-icon.svg";
 import slidersWhiteIcon from "./svg/sliders-white-icon.svg";
+import starIcon from "./svg/star.svg";
 import terminalIcon from "./svg/terminal-icon.svg";
 import terminalSquareIcon from "./svg/terminal-square-icon.svg";
 import uploadIcon from "./svg/upload-black.svg";
@@ -38,6 +42,7 @@ import zapFastIcon from "./svg/zap-fast-black.svg";
 
 const IconList = {
   agentOpsLogo,
+  homeLineIcon,
   arrowUpRightIcon,
   arrowTopRightWhiteIcon,
   arrowDownIcon,
@@ -70,6 +75,10 @@ const IconList = {
   cloud: Cloud,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
+  minusCircle: minusCircleIcon,
+  plusCircle: plusCircleIcon,
+  homeLine: homeLineIcon,
+  star: starIcon,
 };
 
 type SVGAttributes = Partial<SVGProps<SVGSVGElement>>;
