@@ -85,7 +85,7 @@ type RootLayoutProps = Readonly<{ children: React.ReactNode }>;
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="vi">
+    <html lang="vi" suppressHydrationWarning>
       <head>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=G-83DXNSST4Q`}

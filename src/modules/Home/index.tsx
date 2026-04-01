@@ -2,6 +2,7 @@ import circleFrame from "@/assets/images/circle-frame.png";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Contact } from "./components/contact";
+import { FQA } from "./components/fqa";
 import { Hero } from "./components/hero";
 import { HowItWork } from "./components/how-it-work";
 import { OurExpertise } from "./components/our-expertise";
@@ -35,7 +36,8 @@ const Home = () => {
         <OurTeam />
       </section>
       <Testimonials />
-      <TechStack />
+      <FQA />
+      {/* <TechStack /> */}
       <section
         id="contact"
         aria-label="Contact Us"

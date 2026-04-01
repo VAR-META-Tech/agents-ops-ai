@@ -6,6 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { MenuIcon } from "lucide-react";
+import Link from "next/link";
 import { ContactBtn } from "./components/contact-btn";
 import { HeaderLinks } from "./components/header-links";
 import { HeaderMobileLinks } from "./components/header-mobile-links";
@@ -40,9 +41,9 @@ export const NAV_LINKS = [
 export const Header = () => {
   return (
     <header className="flex justify-between items-center max-w-[1280px] h-[92px] mx-auto max-2xl:px-6">
-      <div>
+      <Link href="/">
         <Icons.agentOpsLogo />
-      </div>
+      </Link>
 
       <nav
         className="flex items-center justify-end gap-4 w-full max-xl:justify-end"

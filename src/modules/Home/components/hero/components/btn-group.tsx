@@ -6,7 +6,7 @@ import { handleScroll } from "@/lib/utils";
 
 export const BtnGroup = () => {
   return (
-    <div className="flex items-center justify-center gap-4 mt-10 relative z-10">
+    <div className="flex items-center justify-center gap-4 mt-7 relative z-10">
       <CommonButton
         className="min-w-32 h-11 text-sm !pr-3 !pl-4 gap-1 !bg-[#1E1E1E] hover:!bg-[#343434] !text-white !flex !items-center !justify-center"
         onClick={() => handleScroll("contact")}

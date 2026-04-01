@@ -1,3 +1,7 @@
-import Home from "@/modules/Home";
+import Home from "@/modules/home";
 
-export default Home;
+const HomePage = () => {
+  return <Home />;
+};
+
+export default HomePage;
