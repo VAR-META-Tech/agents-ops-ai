@@ -1,12 +1,15 @@
 'use client';
 
-import { usePost } from '@/api/blog/queries';
+import { usePost, usePosts } from '@/api/blog/queries';
+import type { IBlogListParams } from '@/api/blog/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn, handleScroll } from '@/lib/utils';
 import { BlogBreadcrumb } from '@/modules/blog/components/blog-breadcrumb';
+import type { TCommonSort } from '@/types';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import { BlogContent } from './components/blog-content';
+import { FQA } from './components/fqa';
 import { TableOfContent } from './components/table-of-content';
 import { TopArticles } from './components/top-articles';
 
@@ -25,9 +28,20 @@ export interface TOC {
   subItems?: TOC[];
 }
 
+const params: IBlogListParams = {
+  per_page: 6,
+  page: 1,
+  orderby: 'date',
+  order: 'desc' as TCommonSort,
+  search: '',
+  category_id: '',
+};
+
 export const Blog = () => {
   const { slug } = useParams();
   const { data: post, isLoading, isError, error } = usePost(slug as string);
+  const { data: posts = [], isLoading: isLoadingPosts } = usePosts(params);
+
   const [active, setActive] = useState<string | null>(null);
   const [scrolling, setScrolling] = useState<boolean>(true);
   const [toc, setToc] = useState<TOC[]>([]);
@@ -114,17 +128,21 @@ export const Blog = () => {
   }
 
   return (
-    <div className='mx-auto mt-10 flex w-full max-w-[1280px] justify-between gap-10 max-2xl:px-6'>
-      <div className='w-full max-w-[960px]'>
-        <BlogBreadcrumb title={post.title} />
-        <BlogContent post={post} contentRef={contentRef} />
+    <div className='mt-10'>
+      <div className='mx-auto flex w-full max-w-[1280px] justify-between gap-10 max-2xl:px-6'>
+        <div className='w-full max-w-[960px]'>
+          <BlogBreadcrumb title={post.title} />
+          <BlogContent post={post} contentRef={contentRef} />
+        </div>
+
+        {/* self-start: default flex stretch makes this column as tall as the article, which breaks sticky */}
+        <div className='sticky top-[92px] flex w-full max-w-[256px] shrink-0 flex-col gap-4 self-start max-xl:hidden'>
+          <TableOfContent toc={toc} active={active} handleTarget={handleTarget} />
+          <TopArticles posts={posts} isLoading={isLoadingPosts} />
+        </div>
       </div>
 
-      {/* self-start: default flex stretch makes this column as tall as the article, which breaks sticky */}
-      <div className='sticky top-[92px] flex w-full max-w-[256px] shrink-0 flex-col gap-4 self-start max-xl:hidden'>
-        <TableOfContent toc={toc} active={active} handleTarget={handleTarget} />
-        <TopArticles />
-      </div>
+      <FQA posts={posts} isLoading={isLoadingPosts} />
     </div>
   );
 };

@@ -1,22 +1,11 @@
 'use client';
 
-import { usePosts } from '@/api/blog/queries';
-import type { IBlogListParams, IBlogResponse } from '@/api/blog/types';
+import type { IBlogResponse } from '@/api/blog/types';
 import { CommonTitle } from '@/components/common/common-title';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import type { TCommonSort } from '@/types';
 import { ROUTES } from '@/utils/routes';
 import React from 'react';
-
-const params: IBlogListParams = {
-  per_page: 3,
-  page: 1,
-  orderby: 'date',
-  order: 'desc' as TCommonSort,
-  search: '',
-  category_id: '',
-};
 
 const SKELETON_ITEMS = 1;
 
@@ -24,9 +13,7 @@ const getBlogLink = (slug: string) => {
   return `${ROUTES.BLOG_DETAIL.replace(':slug', slug)}`;
 };
 
-export const TopArticles = () => {
-  const { data: posts = [], isLoading } = usePosts(params);
-
+export const TopArticles = ({ posts, isLoading }: { posts: IBlogResponse[]; isLoading: boolean }) => {
   if (isLoading) {
     return <TopArticlesSkeleton />;
   }
@@ -42,7 +29,7 @@ export const TopArticles = () => {
       </CommonTitle>
 
       <div className='flex flex-col gap-4 pl-5'>
-        {posts.map((post) => (
+        {posts?.slice(0, 3)?.map((post) => (
           <div key={post.id} className='flex flex-col gap-2 border-[#E6E6E6] border-b pb-4 last:border-b-0'>
             <a
               href={getBlogLink(post.slug)}
