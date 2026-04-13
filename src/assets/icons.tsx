@@ -6,6 +6,7 @@ import aiAgentsPlusIcon from './svg/ai-agents-plus.svg';
 import arrowDownIcon from './svg/arrow-down.svg';
 import arrowTopRightWhiteIcon from './svg/arrow-top-right-white.svg';
 import arrowUpRightIcon from './svg/arrow-up-right.svg';
+import arrowUpIcon from './svg/arrow-up.svg';
 import buildingIcon from './svg/building-black.svg';
 import codepenIcon from './svg/codepen-icon.svg';
 import cursorClickBlackIcon from './svg/cursor-click-black.svg';
@@ -17,6 +18,7 @@ import github from './svg/github.svg';
 import globe from './svg/globe.svg';
 import google from './svg/google.svg';
 import homeLineIcon from './svg/home-line.svg';
+import listIcon from './svg/list.svg';
 import locationIcon from './svg/location-icon.svg';
 import microsoft from './svg/microsoft.svg';
 import minusCircleIcon from './svg/minus-circle.svg';
@@ -31,6 +33,7 @@ import terminalIcon from './svg/terminal-icon.svg';
 import terminalSquareIcon from './svg/terminal-square-icon.svg';
 import uploadIcon from './svg/upload-black.svg';
 import window from './svg/window.svg';
+import xIcon from './svg/x-close.svg';
 import zapFastIcon from './svg/zap-fast-black.svg';
 
 const IconList = {
@@ -72,6 +75,9 @@ const IconList = {
   plusCircle: plusCircleIcon,
   homeLine: homeLineIcon,
   star: starIcon,
+  list: listIcon,
+  arrowUp: arrowUpIcon,
+  xIcon,
 };
 
 type SVGAttributes = Partial<SVGProps<SVGSVGElement>>;

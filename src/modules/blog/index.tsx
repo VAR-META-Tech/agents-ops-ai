@@ -3,6 +3,7 @@
 import { usePost, usePosts } from '@/api/blog/queries';
 import type { IBlogListParams } from '@/api/blog/types';
 import { Skeleton } from '@/components/ui/skeleton';
+import useMobile from '@/hooks/useMobile';
 import { cn, handleScroll } from '@/lib/utils';
 import { BlogBreadcrumb } from '@/modules/blog/components/blog-breadcrumb';
 import type { TCommonSort } from '@/types';
@@ -11,6 +12,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BlogContent } from './components/blog-content';
 import { FQA } from './components/fqa';
 import { TableOfContent } from './components/table-of-content';
+import { TableOfContentMobile } from './components/table-of-content-mobile';
 import { TopArticles } from './components/top-articles';
 
 export const generateId = (text: string) => {
@@ -119,6 +121,9 @@ export const Blog = () => {
     }
   }, [scrolling]);
 
+  const isMobile = useMobile('(max-width: 1024px)');
+  console.log('🚀 ~ Blog ~ isMobile:', isMobile);
+
   if (isLoading) {
     return <BlogPageSkeleton />;
   }
@@ -130,16 +135,20 @@ export const Blog = () => {
   return (
     <div className='mt-10'>
       <div className='mx-auto flex w-full max-w-[1280px] justify-between gap-10 max-2xl:px-6'>
-        <div className='w-full max-w-[960px]'>
+        <div className='w-full max-w-[960px] max-xl:w-full'>
           <BlogBreadcrumb title={post.title} />
           <BlogContent post={post} contentRef={contentRef} />
         </div>
 
         {/* self-start: default flex stretch makes this column as tall as the article, which breaks sticky */}
-        <div className='sticky top-[92px] flex w-full max-w-[256px] shrink-0 flex-col gap-4 self-start max-xl:hidden'>
-          <TableOfContent toc={toc} active={active} handleTarget={handleTarget} />
-          <TopArticles posts={posts} isLoading={isLoadingPosts} />
-        </div>
+        {!isMobile && (
+          <div className='sticky top-[92px] flex w-full max-w-[256px] shrink-0 flex-col gap-4 self-start'>
+            <TableOfContent toc={toc} active={active} handleTarget={handleTarget} />
+            <TopArticles posts={posts} isLoading={isLoadingPosts} />
+          </div>
+        )}
+
+        {isMobile && <TableOfContentMobile toc={toc} active={active} handleTarget={handleTarget} />}
       </div>
 
       <FQA posts={posts} isLoading={isLoadingPosts} />
