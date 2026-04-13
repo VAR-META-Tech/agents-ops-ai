@@ -92,27 +92,32 @@ export const TableOfContentMobile = ({
         vaultDirection={false}
         className={cn(
           'data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh]',
-          '!mx-6 !rounded-4xl max-sm:!mx-3 bg-white p-10'
+          '!mx-6 !rounded-4xl max-sm:!mx-3 max-sm:!rounded-3xl bg-white p-10 max-sm:p-6'
         )}
       >
-        <DrawerHeader className='flex flex-row items-start items-center justify-between gap-2 space-y-0 p-0'>
+        <DrawerHeader className='relative flex flex-row items-start justify-between gap-2 space-y-0 p-0'>
           <DrawerTitle className='mb-6 font-normal text-[#494949] text-base leading-[26px]'>
             Table of Contents
           </DrawerTitle>
-          <DrawerClose asChild className='!p-0'>
+          <DrawerClose asChild className='!p-0 absolute top-[-16px] right-[-8px]'>
             <Button
               type='button'
               variant='outline'
-              className='!p-0 h-8 cursor-pointer capitalize'
+              className='!p-0 !shadow-none !h-10 flex w-10 cursor-pointer items-center justify-center capitalize'
               aria-label='Close table of contents'
             >
-              <Icons.xIcon className='size-7' />
+              <Icons.xIcon className='size-6' />
             </Button>
           </DrawerClose>
         </DrawerHeader>
 
-        <Tabs value={active?.replace('#', '') || toc[0]?.id} defaultValue={toc[0]?.id} orientation='vertical'>
-          <TabsList className={tocListLineVariant}>
+        <Tabs
+          value={active?.replace('#', '') || toc[0]?.id}
+          defaultValue={toc[0]?.id}
+          orientation='vertical'
+          className='max-h-[50vh] overflow-y-auto'
+        >
+          <TabsList className={cn(tocListLineVariant)}>
             {toc.map((item) => (
               <TabsTrigger
                 key={item.id}
