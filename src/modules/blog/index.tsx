@@ -122,7 +122,6 @@ export const Blog = () => {
   }, [scrolling]);
 
   const isMobile = useMobile('(max-width: 1024px)');
-  console.log('🚀 ~ Blog ~ isMobile:', isMobile);
 
   if (isLoading) {
     return <BlogPageSkeleton />;

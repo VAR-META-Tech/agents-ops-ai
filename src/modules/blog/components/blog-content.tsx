@@ -51,7 +51,6 @@ function addIdToHeadings(html: string) {
 
 export const BlogContent = ({ post, contentRef }: BlogContentProps) => {
   const { title, author, date, content, lastUpdated } = post;
-  console.log('🚀 ~ BlogContent ~ lastUpdated:', lastUpdated);
   return (
     <section className='w-full flex-1 border-primary-950/10 border-x px-0 pt-[18px] lg:px-4 lg:pr-[34px] lg:pl-5'>
       <h1 className='font-semibold text-5xl leading-14 max-lg:text-3xl max-lg:leading-10 max-xl:text-4xl max-xl:leading-12'>

@@ -20,6 +20,27 @@ export const handleScroll = (targetId: string, offset: number = 92) => {
   }
 };
 
+export const scrollWithOffsetWhenReady = (targetId: string) => {
+  const maxAttempts = 20;
+  const attemptDelayMs = 50;
+
+  let attempts = 0;
+  const tryScroll = () => {
+    const el = document.getElementById(targetId);
+    if (el) {
+      handleScroll(targetId);
+      return;
+    }
+
+    attempts += 1;
+    if (attempts < maxAttempts) {
+      window.setTimeout(tryScroll, attemptDelayMs);
+    }
+  };
+
+  window.setTimeout(tryScroll, 0);
+};
+
 export function readTime(content: string) {
   const WORDS_PER_SECOND = 250 / 60;
 
