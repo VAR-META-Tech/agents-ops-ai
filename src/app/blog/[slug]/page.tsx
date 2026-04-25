@@ -22,6 +22,20 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
     title: title,
     description: description,
     metadataBase: new URL(`${APP_URL}/${slug}`),
+    authors: [{ name: post?.author?.name }],
+    creator: post?.author?.name,
+    publisher: post?.author?.name,
+    applicationName: siteConfig.name,
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: new URL(`${APP_URL}/${slug}`),
+    },
+    verification: {
+      google: siteConfig.googleSiteVerification,
+    },
     openGraph: {
       title: {
         default: title,
@@ -29,13 +43,14 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
       },
       description: description,
       url: new URL(`${APP_URL}/${slug}`),
-      // images: post?.featured_media || [...previousImages],
+      images: [post?.thumbnail || previousImages?.[0]],
+      type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
       title: title,
       description: description,
-      // images: post?.featured_media || [...previousImages],
+      images: [post?.thumbnail || previousImages?.[0]],
     },
   };
 }
