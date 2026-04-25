@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/drawer';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
-import React from 'react';
+import React, { useState } from 'react';
 import type { TOC } from '..';
 
 const DRAWER_SIDES = ['top', 'right', 'bottom', 'left'] as const;
@@ -61,6 +61,8 @@ export const TableOfContentMobile = ({
   active: string | null;
   handleTarget: (id: string) => void;
 }) => {
+  const [open, setOpen] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -69,7 +71,7 @@ export const TableOfContentMobile = ({
   };
 
   return (
-    <Drawer direction='bottom'>
+    <Drawer direction='bottom' open={open} onOpenChange={setOpen}>
       <div
         className={cn(
           '-translate-x-1/2 fixed bottom-[max(1rem,env(safe-area-inset-bottom,0px))] left-1/2 z-50 flex w-[80%]',
@@ -121,7 +123,11 @@ export const TableOfContentMobile = ({
             {toc.map((item) => (
               <TabsTrigger
                 key={item.id}
-                onClick={(e) => handleTarget(item.id)}
+                onClick={() => {
+                  // Vaul drawer locks body scroll on mobile; close first, then scroll.
+                  setOpen(false);
+                  window.setTimeout(() => handleTarget(item.id), 200);
+                }}
                 value={item.id}
                 className={cn('!leading-[26px] !py-1', tocTriggerLineVariant)}
               >
