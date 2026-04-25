@@ -72,8 +72,8 @@ export const TableOfContentMobile = ({
     <Drawer direction='bottom'>
       <div
         className={cn(
-          '-translate-x-1/2 fixed bottom-[max(1rem,env(safe-area-inset-bottom,0px))] left-1/2 z-50 flex w-[80%] justify-between gap-2 px-6',
-          'max-md:w-full'
+          '-translate-x-1/2 fixed bottom-[max(1rem,env(safe-area-inset-bottom,0px))] left-1/2 z-50 flex w-[80%]',
+          'justify-between gap-2 px-6 max-md:w-full'
         )}
       >
         <DrawerTrigger asChild>
@@ -92,7 +92,7 @@ export const TableOfContentMobile = ({
         vaultDirection={false}
         className={cn(
           'data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh]',
-          '!mx-6 !rounded-4xl max-sm:!mx-3 max-sm:!rounded-3xl bg-white p-10 max-sm:p-6'
+          '!mx-6 !rounded-4xl max-sm:!mx-3 max-sm:!rounded-3xl mb-2 bg-white p-10 after:hidden max-sm:p-6'
         )}
       >
         <DrawerHeader className='relative flex flex-row items-start justify-between gap-2 space-y-0 p-0'>

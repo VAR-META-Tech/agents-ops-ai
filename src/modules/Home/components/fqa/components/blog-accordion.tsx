@@ -30,14 +30,14 @@ export function BlogAccordion({ posts }: BlogAccordionProps) {
 
   return (
     <Accordion
-      type='single'
-      collapsible
+      type='multiple'
+      // collapsible
       // defaultValue={posts[0]?.id.toString()}
       className='mx-auto w-full max-w-[960px]'
     >
       {posts.map((post) => (
-        <AccordionItem value={post.id.toString()} key={post.id}>
-          <div className='flex items-center justify-between'>
+        <AccordionItem value={post.id.toString()} key={post.id} className='mb-10 last:mb-0'>
+          <div className='flex items-start justify-between gap-3'>
             <a
               href={getBlogLink(post.slug)}
               target='_blank'
@@ -46,13 +46,13 @@ export function BlogAccordion({ posts }: BlogAccordionProps) {
               dangerouslySetInnerHTML={{ __html: post.title }}
             />
             <AccordionTrigger
-              className='text-left font-semibold text-2xl leading-9 hover:no-underline'
+              className='p-0 pt-1 text-left font-semibold text-2xl leading-9 hover:no-underline'
               icon={<TriggerIcon />}
             />
           </div>
           <AccordionContent>
             <div
-              className='font-normal text-[#1E1E1EDB] text-lg leading-8'
+              className='mr-12 font-normal text-[#1E1E1EDB] text-lg leading-8'
               dangerouslySetInnerHTML={{ __html: post.description }}
             />
           </AccordionContent>

@@ -19,6 +19,7 @@ export class BlogResponse implements IBlogResponse {
   categoryNames: string[];
   author: { name: string; image: string };
   date: string;
+  lastUpdated: string;
 
   constructor(post: IBlogDTOResponse, media: any, author: any) {
     this.id = post.id;
@@ -34,5 +35,6 @@ export class BlogResponse implements IBlogResponse {
       image: author?.avatar_urls?.['96'] || 'https://via.placeholder.com/96x96',
     };
     this.date = dayjs(post?.date).format('MMM, DD YYYY');
+    this.lastUpdated = dayjs(post?.modified).format('MMM, DD YYYY');
   }
 }

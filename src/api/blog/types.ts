@@ -108,6 +108,7 @@ export interface IBlogResponse {
     image: string;
   };
   date: string;
+  lastUpdated: string;
 }
 
 export interface IBlogListParams {

@@ -10,31 +10,65 @@ interface BlogContentProps {
   contentRef: React.RefObject<HTMLDivElement | null>;
 }
 
-function addIdToHeadings(html: string) {
-  return html.replace(/<h([2-6])>(.*?)<\/h\1>/g, (match, headingLevel, headingContent) => {
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = headingContent;
-    const textContent = tempDiv.textContent || tempDiv.innerText || '';
+/** Remove existing `id` so we can set a slug derived from visible heading text (TOC / deep links). */
+function stripHeadingIdAttr(attrs: string): string {
+  return attrs.replace(/\bid\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '').trim();
+}
 
-    const id = generateId(textContent.trim());
-    return `<h${headingLevel} id="${id}">${headingContent}</h${headingLevel}>`;
-  });
+function headingInnerText(html: string): string {
+  if (typeof document === 'undefined') {
+    return html
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&nbsp;/gi, ' ')
+      .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+      .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = html;
+  return (tempDiv.textContent || tempDiv.innerText || '').trim();
+}
+
+/**
+ * Match `<h2>…</h2>` and `<h2 style="…" data-…>…</h2>` (attributes on the opening tag).
+ * Inner HTML may span lines (`[\s\S]*?`).
+ */
+function addIdToHeadings(html: string) {
+  return html.replace(
+    /<h([2-6])([^>]*)>([\s\S]*?)<\/h\1>/gi,
+    (match, headingLevel: string, rawAttrs: string, headingContent: string) => {
+      const textContent = headingInnerText(headingContent);
+      const id = generateId(textContent);
+      if (!id) return match;
+
+      const attrsWithoutId = stripHeadingIdAttr((rawAttrs ?? '').trim());
+      const attrsPart = attrsWithoutId ? ` ${attrsWithoutId} id="${id}"` : ` id="${id}"`;
+      return `<h${headingLevel}${attrsPart}>${headingContent}</h${headingLevel}>`;
+    }
+  );
 }
 
 export const BlogContent = ({ post, contentRef }: BlogContentProps) => {
-  const { title, author, date, content } = post;
-
+  const { title, author, date, content, lastUpdated } = post;
+  console.log('🚀 ~ BlogContent ~ lastUpdated:', lastUpdated);
   return (
-    <section className='w-full flex-1 border-primary-950/10 border-x px-4 pt-[18px] lg:pr-[34px] lg:pl-5'>
-      <h1 className='font-semibold text-5xl leading-14 max-xl:text-4xl max-xl:leading-12'>{convert(title)}</h1>
-      <div className='flex flex-wrap items-center gap-3 py-3'>
-        <p className='whitespace-nowrap text-primary-950/60 capitalize'>
-          Posted by <span className='font-bold text-lg'>{author?.name}</span>
-        </p>
-        <Icons.star className='text-primary-600' />
-        <p className='whitespace-nowrap text-primary-950/60'>{date}</p>
-        <Icons.star className='text-primary-600' />
-        <p className='whitespace-nowrap text-primary-950/60'>{readTime(content).minutes} min read</p>
+    <section className='w-full flex-1 border-primary-950/10 border-x px-0 pt-[18px] lg:px-4 lg:pr-[34px] lg:pl-5'>
+      <h1 className='font-semibold text-5xl leading-14 max-lg:text-3xl max-lg:leading-10 max-xl:text-4xl max-xl:leading-12'>
+        {convert(title)}
+      </h1>
+      <div className='text-[#242424]'>
+        <div className='flex flex-wrap items-center gap-3 py-3'>
+          <p className='whitespace-nowrap text-primary-950/60 capitalize'>
+            Posted by <span className='font-bold text-lg'>{author?.name}</span>
+          </p>
+          <Icons.star className='text-primary-600' />
+          <p className='whitespace-nowrap text-primary-950/60'>{date}</p>
+          <Icons.star className='text-primary-600' />
+          <p className='whitespace-nowrap text-primary-950/60'>{readTime(content).minutes} min read</p>
+          <Icons.star className='text-primary-600' />
+          <p className='whitespace-nowrap text-primary-950/60'>Last updated on {lastUpdated}</p>
+        </div>
       </div>
       <article
         ref={contentRef}

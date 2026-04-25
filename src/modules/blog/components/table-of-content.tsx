@@ -59,7 +59,9 @@ export const TableOfContent = ({
           {toc.map((item) => (
             <TabsTrigger
               key={item.id}
-              onClick={(e) => handleTarget(item.id)}
+              onClick={(e) => {
+                handleTarget(item.id);
+              }}
               value={item.id}
               className={cn('!leading-[26px] !py-1', tocTriggerLineVariant)}
             >
