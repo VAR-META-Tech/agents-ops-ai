@@ -1,6 +1,6 @@
 import type { IBlogResponse } from '@/api/blog/types';
 import { Icons } from '@/assets/icons';
-import { readTime } from '@/lib/utils';
+import { cn, readTime } from '@/lib/utils';
 import { convert } from 'html-to-text';
 import React from 'react';
 import { generateId } from '..';
@@ -49,6 +49,13 @@ function addIdToHeadings(html: string) {
   );
 }
 
+function normalizeHtmlSpacing(html: string) {
+  return html
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/\u00A0/g, ' ')
+    .replace(/[ \t]{2,}/g, ' ');
+}
+
 export const BlogContent = ({ post, contentRef }: BlogContentProps) => {
   const { title, author, date, content, lastUpdated } = post;
   return (
@@ -65,15 +72,21 @@ export const BlogContent = ({ post, contentRef }: BlogContentProps) => {
           <p className='whitespace-nowrap text-primary-950/60'>{date}</p>
           <Icons.star className='text-primary-600' />
           <p className='whitespace-nowrap text-primary-950/60'>{readTime(content).minutes} min read</p>
-          <Icons.star className='text-primary-600' />
-          <p className='whitespace-nowrap text-primary-950/60'>Last updated on {lastUpdated}</p>
+          {/* <Icons.star className="text-primary-600" /> */}
         </div>
       </div>
       <article
         ref={contentRef}
-        className='prose lg:prose-lg prose-figure:!w-full prose-img:!w-full prose-figcaption:!text-sm !min-w-full [&_h1_img]:!my-0 break-words prose-em:break-words pt-4 pb-[62px] prose-figcaption:text-center prose-headings:font-medium prose-strong:font-medium prose-h2:text-2xl prose-h3:text-lg lg:prose-h2:text-[32px] lg:prose-h3:text-xl [&_b]:font-medium [&_iframe]:aspect-video [&_iframe]:max-h-[400px] [&_iframe]:w-full'
-        dangerouslySetInnerHTML={{ __html: addIdToHeadings(content) }}
+        className={cn(
+          'prose lg:prose-lg prose-figure:!w-full prose-img:!w-full prose-figcaption:!text-sm !min-w-full [&_h1_img]:!my-0 break-words prose-em:break-words pt-4 pb-[62px] prose-figcaption:text-center',
+          'prose-headings:font-medium prose-strong:font-medium prose-h2:text-2xl prose-h3:text-lg lg:prose-h2:text-[32px] lg:prose-h3:text-xl [&_b]:font-medium [&_iframe]:aspect-video [&_iframe]:max-h-[400px]',
+          '[&_h1]:!text-left [&_h2]:!text-left [&_h3]:!text-left [&_h4]:!text-left [&_h5]:!text-left [&_h6]:!text-left max-lg:[&_p]:!text-left max-lg:[&_li]:!text-left text-left [&_iframe]:w-full lg:[&_p]:text-justify'
+        )}
+        dangerouslySetInnerHTML={{
+          __html: addIdToHeadings(normalizeHtmlSpacing(content)),
+        }}
       />
+      <p className='mb-10 whitespace-nowrap text-gray-500 text-primary-950/60 text-sm'>Last updated on {lastUpdated}</p>
     </section>
   );
 };
